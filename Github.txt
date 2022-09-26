@@ -10,3 +10,14 @@ Banyak sekali fungsi yang bisa digunakan oleh para developer, sehingga melalui p
 - Start a Project
 - Create a New File
 - Bersosialisasi
+3. Perintah-perintah yang ada pada Github
+- Repo/Repository = Folder suatu project.
+- Commit = Rekaman/snapshot dari repository (Riwayat perubahan repository).
+- Hash = Penanda unik pada sebuah commit (terdiri dari angka dan huruf yang panjang).
+- Checkout = Berpindah ke sebuah perubahan tertentu.
+- Branch = Cabang dari sebuah perubahan.
+- Merge = Menggabungkan dua atau lebih branch.
+- Remote = Resource yang memiliki repository.
+- Clone = Mengambil repository dari remote.
+- Push = Mengirim commit ke repository.
+- Pull = Mengambil commit dari repository.
