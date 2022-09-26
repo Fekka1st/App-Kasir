@@ -3,3 +3,21 @@ Github
 1. Pengertian
 GitHub merupakan manajemen project, sistem versioning code, sekaligus platform jaringan sosial bagi para developer seluruh dunia.
 Banyak sekali fungsi yang bisa digunakan oleh para developer, sehingga melalui platform ini memudahkan developer dalam mengembangkan sebuah karya.
+2. Cara Menggunakan Github bagi pemula
+- Join Account
+- Verifikasi Alamat E-mail
+- Lengkapi Akun Profil
+- Start a Project
+- Create a New File
+- Bersosialisasi
+3. Perintah-perintah yang ada pada Github
+- Repo/Repository = Folder suatu project.
+- Commit = Rekaman/snapshot dari repository (Riwayat perubahan repository).
+- Hash = Penanda unik pada sebuah commit (terdiri dari angka dan huruf yang panjang).
+- Checkout = Berpindah ke sebuah perubahan tertentu.
+- Branch = Cabang dari sebuah perubahan.
+- Merge = Menggabungkan dua atau lebih branch.
+- Remote = Resource yang memiliki repository.
+- Clone = Mengambil repository dari remote.
+- Push = Mengirim commit ke repository.
+- Pull = Mengambil commit dari repository.
