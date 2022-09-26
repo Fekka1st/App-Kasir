@@ -1,0 +1,13 @@
+#Git merupakan salah software yang perlu diketahui oleh statistisi dan sainstis data yang ngin mengembangkan aplikasi statistik atau sains data.
+Sofware ini sangat membantu dalam kolaborasi pengembangan aplikasi maupun menyimpan beberapa versi dari source code.fit 
+
+#Git punya keuntungan untuk Developer/Programmer hanya untuk merubah source codenya saja tanpa harus membuat banyak file baru tapi semua orang yang bekerja 
+dalam proyek tersebut harus membuat branch baru di workspacenya, dengan begitu bisa lebih meminimalisir penggunaan memory di Hardisk anda.
+
+#Git dan GitHub menangani commands secara berbeda
+Developer yang menggunakan Git dapat menggunakan command-line tool, yaitu pengubah kode dan dapat digabungkan menuju perangkat lokal.
+Sedangkan, GitHub menyediakan interface grafis berbasis cloud sebagai tempat untuk melakukan seluruh tugas.
+
+#Apa fungsi version control system VCS seperti GIT Apa beda GIT dengan GitHub?
+Kesimpulan. Version Control System adalah sebuah sistem yang menyimpan rekaman yang terdiri dari perubahan source code. 
+VCS juga memungkinkan bekerja kolaborasi yang lebih baik. Git merupakan alat version control. GitHub merupakan alat version control sekaligus penyimpanan cloud.
