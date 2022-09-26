@@ -1,0 +1,2 @@
+Git merupakan salah software yang perlu diketahui oleh statistisi dan sainstis data yang ngin mengembangkan aplikasi statistik atau sains data.
+Sofware ini sangat membantu dalam kolaborasi pengembangan aplikasi maupun menyimpan beberapa versi dari source code.
