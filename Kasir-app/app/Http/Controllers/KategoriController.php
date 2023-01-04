@@ -32,11 +32,32 @@ class KategoriController extends Controller
             ->addColumn('aksi', function ($kategori) {
                 return
                     '<div class="btn-group">
-                    <button type="button" class="btn btn-info btn-flat">Edit</button>
-                    <button type="button" class="btn btn-danger btn-flat">Hapus</button>
+                    <button onclick="edit(`' . route('kategori.update', $kategori->id_kategori) . '`)" type="button" class="btn btn-info btn-flat">Edit</button>
+                    <button onclick="hapus(`' . route('kategori.destroy', $kategori->id_kategori) . '`)"  type="button" class="btn btn-danger btn-flat">Hapus</button>
                     </div>';
             })
             ->rawColumns(['aksi'])
             ->make(true);
+    }
+
+    public function show($id)
+    {
+        $kategori = Kategori::find($id);
+        return response()->json($kategori);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $kategori = Kategori::find($id);
+        $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->update();
+        return response()->json('Data berhasil diupdate', 200);
+    }
+
+    public function destroy($id)
+    {
+        $kategori = Kategori::find($id);
+        $kategori->delete();
+        return response()->json(null, 204);
     }
 }

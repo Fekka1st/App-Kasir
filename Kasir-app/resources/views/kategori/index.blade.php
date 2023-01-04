@@ -68,7 +68,7 @@
                         })
                         .done((response) => {
                             $('#form').modal('hide');
-                            alert('Data berhasil')
+                            alert('Data berhasil');
                             table.ajax.reload();
                         })
                         .fail((errors) => {
@@ -88,6 +88,40 @@
             $('#form [name=_method]').val('post');
             $('#form [name=nama_kategori]').focus();
 
+        }
+
+        function edit(url) {
+            $('#form').modal('show');
+            $('#formLabel').text('Edit Kategori');
+            $('#form form')[0].reset();
+            $('#form form').attr('action', url);
+            $('#form [name=_method]').val('put');
+            $('#form [name=nama_kategori]').focus();
+
+            $.get(url)
+                .done((response) => {
+                    $('#form [name=nama_kategori]').val(response.nama_kategori);
+                })
+                .fail((errors) => {
+                    alert('Tidak dapat menampilkan data');
+                    return;
+                });
+        }
+
+        function hapus(url) {
+            if (confirm('Ingin hapus data ?')) {
+                $.post(url, {
+                        '_token': $('[name=csrf-token]').attr('content'),
+                        '_method': 'delete'
+                    })
+                    .done((response) => {
+                        table.ajax.reload();
+                    })
+                    .fail((errors) => {
+                        alert('tidak dapat menghapus');
+                        return;
+                    })
+            }
         }
     </script>
 @endpush
