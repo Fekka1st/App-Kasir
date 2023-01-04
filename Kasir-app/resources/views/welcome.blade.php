@@ -1,5 +1,15 @@
 @extends('layouts.master')
 
+
+@section('title')
+    Selamat Datang
+@endsection
+
+@section('rute')
+    @parent
+    <li class="breadcrumb-item active">Dashboard</li>
+@endsection
+
 @section('content')
     <div class="container-fluid">
         <!-- Info boxes -->

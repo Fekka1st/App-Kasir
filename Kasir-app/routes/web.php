@@ -27,6 +27,6 @@ Route::middleware([
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/kategori/data', [KategoriController::class, 'data']);
+    Route::get('/kategori/data', [KategoriController::class, 'data'])->name('kategori.data');
     Route::resource('/kategori', KategoriController::class); // ini bukan array guys hati hati yah 
 });
