@@ -68,11 +68,11 @@
                         })
                         .done((response) => {
                             $('#form').modal('hide');
-                            alert('Data berhasil');
+                            swal("Berhasil", "Data Berhasil", "success");
                             table.ajax.reload();
                         })
                         .fail((errors) => {
-                            alert('tidak dapat menyimpan data')
+                            swal("Gagal", "Data tidak bisa ditambahkan", "error");
                             return;
                         })
                 }
@@ -103,25 +103,44 @@
                     $('#form [name=nama_kategori]').val(response.nama_kategori);
                 })
                 .fail((errors) => {
-                    alert('Tidak dapat menampilkan data');
+                    swal("Gagal", "Data tidak bisa ditambahkan", "error");
                     return;
                 });
         }
 
         function hapus(url) {
-            if (confirm('Ingin hapus data ?')) {
-                $.post(url, {
-                        '_token': $('[name=csrf-token]').attr('content'),
-                        '_method': 'delete'
-                    })
-                    .done((response) => {
-                        table.ajax.reload();
-                    })
-                    .fail((errors) => {
-                        alert('tidak dapat menghapus');
-                        return;
-                    })
-            }
+            // if (confirm('Ingin hapus data ?')) {
+            //    
+            // }
+
+            swal({
+                    title: "Apakah Kamu Yakin",
+                    text: "Data terhapus tidak dapat kembali lagi",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Data Berhasil dihapus", {
+                            icon: "success",
+                        });
+                        $.post(url, {
+                                '_token': $('[name=csrf-token]').attr('content'),
+                                '_method': 'delete'
+                            })
+                            .done((response) => {
+                                table.ajax.reload();
+                                swal("Berhasil", "Dihapus", "success");
+                            })
+                            .fail((errors) => {
+                                swal("Gagal", "Data tidak bisa ditambahkan", "error");
+                                return;
+                            })
+                    } else {
+                        swal("Silahkan Pikirkan lagi");
+                    }
+                });
         }
     </script>
 @endpush
