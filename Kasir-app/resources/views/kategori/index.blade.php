@@ -14,14 +14,14 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header with-border">
-                    <button onclick="tambah()"class="btn btn-success">Tambah</button>
+                    <button onclick="tambah('{{ route('kategori.store') }}')"class="btn btn-success">Tambah</button>
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table table-striped table-bordered ">
                         <thead>
                             <th width="5%">No</th>
                             <th>Kategori</th>
-                            <th widht="10$">Aksi</th>
+                            <th width="10$">Aksi</th>
                         </thead>
                     </table>
                 </div>
@@ -34,21 +34,60 @@
 
 @push('script')
     <script>
-        let tablel;
+        let table;
         $(function() {
-            tablel = $('.table').DataTable({
+            table = $('.table').DataTable({
                 processing: true,
                 autoWidth: false,
-                Ajax: {
+                ajax: {
                     url: '{{ route('kategori.data') }}',
+                },
+                columns: [{
+                        data: 'DT_RowIndex',
+                        searchable: false,
+                        sortable: false
+                    },
+                    {
+                        data: 'nama_kategori'
+                    },
+                    {
+                        data: 'aksi',
+                        searchable: false,
+                        sortable: false
+                    },
+                ]
 
+            });
+
+            $('#form').validator().on('submit', function(e) {
+                if (!e.preventDefault()) {
+                    $.ajax({
+                            url: $('#form form').attr('action'),
+                            type: 'post',
+                            data: $('#form form').serialize(),
+                        })
+                        .done((response) => {
+                            $('#form').modal('hide');
+                            alert('Data berhasil')
+                            table.ajax.reload();
+                        })
+                        .fail((errors) => {
+                            alert('tidak dapat menyimpan data')
+                            return;
+                        })
                 }
             });
         });
 
-        function tambah() {
+
+        function tambah(url) {
             $('#form').modal('show');
-            $('#formLabel').text('Tambah Kategori')
+            $('#formLabel').text('Tambah Kategori');
+            $('#form form')[0].reset();
+            $('#form form').attr('action', url);
+            $('#form [name=_method]').val('post');
+            $('#form [name=nama_kategori]').focus();
+
         }
     </script>
 @endpush

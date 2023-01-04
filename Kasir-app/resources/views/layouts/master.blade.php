@@ -104,6 +104,7 @@
     <script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <script src="{{ asset('AdminLTE/dist/js/pages/dashboard2.js') }}"></script>
+    <script src="{{ asset('js/validator.min.js') }}"></script>
     @stack('script')
 </body>
 

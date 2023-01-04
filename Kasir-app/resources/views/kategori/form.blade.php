@@ -2,6 +2,7 @@
     <div class="modal-dialog">
         <form action="" method="post" class="form-horizontal">
             @csrf
+            @method('post')
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="formLabel"></h5>
@@ -21,7 +22,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </form>
