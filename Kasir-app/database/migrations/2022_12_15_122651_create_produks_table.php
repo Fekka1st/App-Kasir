@@ -15,7 +15,7 @@ class CreateProduksTable extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->id('id_produk');
-            $table->integer('id_kategori')->unsigned();
+            $table->integer('id_produk')->unsigned();
             $table->string('kode_produk');
             $table->string('nama_produk');
             $table->string('merk')->nullable();
