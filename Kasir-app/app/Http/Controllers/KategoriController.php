@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use DataTables;
@@ -31,8 +32,8 @@ class KategoriController extends Controller
             ->addColumn('aksi', function ($kategori) {
                 return
                     '<div class="btn-group">
-                    <button onclick="edit(`' . route('kategori.update', $kategori->id_kategori) . '`)" type="button" class="btn btn-info btn-flat">Edit</button>
-                    <button onclick="hapus(`' . route('kategori.destroy', $kategori->id_kategori) . '`)"  type="button" class="btn btn-danger btn-flat">Hapus</button>
+                    <button onclick="edit(`' . route('kategori.update', $kategori->id_kategori) . '`)" type="button" class="btn btn-info btn-flat"><i class="fas fa-edit"></i>Edit</button>
+                    <button onclick="hapus(`' . route('kategori.destroy', $kategori->id_kategori) . '`)"  type="button" class="btn btn-danger btn-flat"> <i class="fas fa-trash"></i>Hapus</button>
                     </div>';
             })
             ->rawColumns(['aksi'])

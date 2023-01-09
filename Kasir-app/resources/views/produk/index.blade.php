@@ -11,33 +11,42 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-lg-12">
             <div class="card">
                 <div class="card-header with-border">
-                    <button onclick="tambah('{{ route('kategori.store') }}')"class="btn btn-success">Tambah</button>
+                    <div class="btn-group">
+                        <button onclick="tambah('{{ route('produk.store') }}')" class="btn btn-success"><i
+                                class="fa fa-plus-circle"></i> Tambah</button>
+                    </div>
                 </div>
                 <div class="card-body table-responsive">
-                    <table class="table table-striped table-bordered ">
-                        <thead>
-                            <th width="5%">No</th>
-                            <th>Kode</th>
-                            <th>Nama</th>
-                            <th>Kategori</th>
-                            <th>Merk</th>
-                            <th>Harga Beli</th>
-                            <th>Harga Jual</th>
-                            <th>Diskon</th>
-                            <th>Stok</th>
-                            <th width="10$">Aksi</th>
-                        </thead>
-                    </table>
+                    <form action="" method="post" class="form-produk">
+                        @csrf
+                        <table class="table table-stiped table-bordered">
+                            <thead>
+                                <th width="5%">
+                                    <input type="checkbox" name="select_all" id="select_all">
+                                </th>
+                                <th width="5%">No</th>
+                                <th>Kode</th>
+                                <th>Nama</th>
+                                <th>Kategori</th>
+                                <th>Merk</th>
+                                <th>Harga Beli</th>
+                                <th>Harga Jual</th>
+                                <th>Diskon</th>
+                                <th>Stok</th>
+                                <th width="15%"><i class="fa fa-cog"></i></th>
+                            </thead>
+                        </table>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-@endsection
 
-@includeIf('produk.form')
+    @includeIf('produk.form')
+@endsection
 
 @push('script')
     <script>
@@ -50,6 +59,11 @@
                     url: '{{ route('produk.data') }}'
                 },
                 columns: [{
+                        data: 'select_all',
+                        searchable: false,
+                        sortable: false
+                    },
+                    {
                         data: 'DT_RowIndex',
                         searchable: false,
                         sortable: false
@@ -77,9 +91,6 @@
                     },
                     {
                         data: 'stok'
-                    },   
-                    {
-                        data: 'nama_kategori'
                     },
                     {
                         data: 'aksi',

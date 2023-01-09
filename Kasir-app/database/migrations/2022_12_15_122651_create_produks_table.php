@@ -14,10 +14,10 @@ class CreateProduksTable extends Migration
     public function up()
     {
         Schema::create('produks', function (Blueprint $table) {
-            $table->id('id_produk');
-            $table->integer('id_produk')->unsigned();
-            $table->string('kode_produk');
-            $table->string('nama_produk');
+            $table->increments('id_produk');
+            $table->unsignedInteger('id_kategori');
+            $table->string('kode_produk')->unique();
+            $table->string('nama_produk')->unique();
             $table->string('merk')->nullable();
             $table->integer('harga_beli');
             $table->tinyInteger('diskon')->default(0);
