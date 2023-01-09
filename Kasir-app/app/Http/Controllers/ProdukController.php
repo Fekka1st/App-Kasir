@@ -43,7 +43,7 @@ class ProdukController extends Controller
                 ';
             })
             ->addColumn('kode_produk', function ($produk) {
-                return '<span class="label label-success">' . $produk->kode_produk . '</span>';
+                return '<span class="badge bg-success">' . $produk->kode_produk . '</span>';
             })
             ->addColumn('harga_beli', function ($produk) {
                 return format_uang($produk->harga_beli);
@@ -86,5 +86,15 @@ class ProdukController extends Controller
         $produk = Produk::find($id);
         $produk->delete();
         return response()->json(null, 204);
+    }
+
+    public function deleteselected(Request $request)
+    {
+        foreach ($request->id_produk as $id) {
+            $produk = Produk::find($id);
+            $produk->delete();
+        }
+
+        return response(null, 204);
     }
 }

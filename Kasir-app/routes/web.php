@@ -33,6 +33,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/kategori', KategoriController::class); // ini bukan array guys hati hati yah 
 
     Route::get('/produk/data', [ProdukController::class, 'data'])->name('produk.data');
+    Route::post('/produk/delete-selected', [ProdukController::class, 'deleteselected'])->name('produk.delete_selected');
     Route::resource('/produk', ProdukController::class);
 });
-

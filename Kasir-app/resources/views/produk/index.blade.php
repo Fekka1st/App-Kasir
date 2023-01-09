@@ -17,6 +17,8 @@
                     <div class="btn-group">
                         <button onclick="tambah('{{ route('produk.store') }}')" class="btn btn-success"><i
                                 class="fa fa-plus-circle"></i> Tambah</button>
+                        <button onclick="deleteselected('{{ route('produk.delete_selected') }}')" class="btn btn-danger"><i
+                                class="fa fa-plus-circle"></i> Hapus Item</button>
                     </div>
                 </div>
                 <div class="card-body table-responsive">
@@ -119,6 +121,10 @@
                         })
                 }
             });
+            $('[name=select_all]').on('click', function() {
+                $(':checkbox').prop('checked', this.checked);
+            })
+
         });
 
 
@@ -182,13 +188,41 @@
                                 swal("Berhasil", "Dihapus", "success");
                             })
                             .fail((errors) => {
-                                swal("Gagal", "Data tidak bisa ditambahkan", "error");
+
                                 return;
                             })
                     } else {
                         swal("Silahkan Pikirkan lagi");
                     }
                 });
+        }
+
+        function deleteselected(url) {
+            if ($('input:checked').length > 1) {
+                swal({
+                        title: "Apakah Kamu Yakin",
+                        text: "Data terhapus tidak dapat kembali lagi",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.post(url, $('.form-produk').serialize())
+                                .done((response) => {
+                                    table.ajax.reload();
+                                    swal("Berhasil", "Dihapus", "success");
+                                })
+                                .fail((errors) => {
+                                    swal("error", "Data tidak dapat dihapus", "error");
+                                    return;
+                                });
+                        }
+                    });
+            } else {
+                swal("Informasi", "Pilih Data yang akan dihapus", "info");
+                return;
+            }
         }
     </script>
 @endpush
