@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use App\Models\Produk;
 use Illuminate\Http\Request;
-use DataTables;
+// use DataTables;
 use PDF;
 
 class ProdukController extends Controller
@@ -106,6 +106,7 @@ class ProdukController extends Controller
             $produk = Produk::find($id);
             $dataproduk[] = $produk;
         }
+
         $pdf = PDF::loadView('produk.barcode', compact('dataproduk'));
         $pdf->setPaper('a4', 'potrait');
         return $pdf->stream('Cetak_Barcode');

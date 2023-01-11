@@ -166,7 +166,8 @@ return [
          * Package Service Providers...
          */
         Yajra\DataTables\DataTablesServiceProvider::class,
-
+        Milon\Barcode\BarcodeServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -177,8 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
-        Milon\Barcode\BarcodeServiceProvider::class,
-        Barryvdh\DomPDF\ServiceProvider::class,
+
 
     ],
 
