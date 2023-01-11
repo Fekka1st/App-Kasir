@@ -106,7 +106,7 @@
     <script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <script src="{{ asset('AdminLTE/dist/js/pages/dashboard2.js') }}"></script>
     <script src="{{ asset('js/validator.min.js') }}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     @stack('script')
 </body>
 
