@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,4 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/produk/delete-selected', [ProdukController::class, 'deleteselected'])->name('produk.delete_selected');
     Route::post('/produk/cetak-barcode', [ProdukController::class, 'cetakbarcode'])->name('produk.cetak_barcode');
     Route::resource('/produk', ProdukController::class);
+
+    Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
+    Route::resource('/pengeluaran', PengeluaranController::class);
 });
