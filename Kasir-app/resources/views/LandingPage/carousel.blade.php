@@ -2,23 +2,21 @@
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="" class="d-block w-100" alt="carousel1">
+          <img src="{{ asset('img/carousel1.png')}}" class="d-block w-100" alt="carousel1">
+          <div class="carousel-caption d-none d-md-block">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{ asset('img/carousel2.png')}}" class="d-block w-100" alt="carousel2">
           <div class="carousel-caption d-none d-md-block">
             <h3>Aplikasi Kasir HadirMart</h3>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="" class="d-block w-100" alt="carousel2">
+          <img src="{{ asset('img/carousel3.jpg')}}" class="d-block w-100" alt="carousel3">
           <div class="carousel-caption d-none d-md-block">
             <h3>Perusahaan Perdagangan Ritel Terbaik</h3>
             <h5>Menyediakan Kebutuhan Sehari-hari</h5>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="" class="d-block w-100" alt="carousel3">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Brand Minimarket</h3>
-            <h5>Melayani Sepenuh Hati</h5>
           </div>
         </div>
       </div>

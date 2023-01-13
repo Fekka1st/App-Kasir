@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('LandingPage.master')
 
 @section('content')
 <div class="container">            
@@ -7,9 +7,13 @@
         <div class="card-body">
           <h1 class="card-title">Profil</h1> <hr/>
           <div class="row">
-            <video controls>
-              <source src="assets/profile.mp4" type="video/mp4">
-            </video>
+            <div class="desc">
+                <div class="card-text text-center" data-aos="fade-up" data-aos-duration="2300">
+                  <p class="text-center">HadirMart hadir dengan sebuah prinsip bahwa nilai kebaikan akan memberikan banyak manfaat. Oleh karena itu, kami selalu berusaha mempertahankan nilai kebaikan setiap pekerjaan sambil mempertahankan mandat dalam kualitas, waktu, dan layanan.</p>
+                  <p>"Kepuasan anda adalah tanggung jawab kami”</p>
+                  <p>*****</p>
+                </div>
+              </div>
           </div>
         </div>
       </div>

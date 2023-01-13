@@ -2,7 +2,7 @@
     <nav id="sticky" class="navbar navbar-expand-lg fixed-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img src="assets/images/Logo.png" alt="Logo">
+          <img src="{{ asset('img/Logo.png')}}" alt="Logo">
         </a>
         <h3>HadirMart</h3>  
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,9 +20,7 @@
               <a class="nav-link" href="#location">Lokasi</a>
             </li>
             <li class="nav-item">
-              <form class="d-flex" role="search">
-                <input class="form-control" type="search" placeholder="Cari" aria-label="Search">
-              </form>
+              <a class="nav-link" href="#login">Login</a>
             </li>
           </ul>
         </div>
