@@ -14,7 +14,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header with-border">
-                    <button onclick="tambah('{{ route('kategori.store') }}')"class="btn btn-success">Tambah</button>
+                    <button onclick="tambah('{{ route('kategori.store') }}')" class="btn btn-success"><i
+                            class="fa fa-plus-circle"></i> Tambah</button>
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table table-striped table-bordered ">
