@@ -8,10 +8,22 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/dashboard" class="nav-link">Home</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+        <li>
+            <h4 class="mr-4">Tanggal/Waktu : </h4>
+        </li>
+        <li>
+            <h4 id="Tanggal"></h4>
         </li>
     </ul>
+    <script>
+        window.setTimeout("waktu()", 1000);
+
+        function waktu() {
+            setTimeout("waktu()", 1000);
+            var dt = new Date();
+            document.getElementById("Tanggal").innerHTML = dt.toLocaleString();
+        }
+    </script>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">

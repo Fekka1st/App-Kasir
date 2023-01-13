@@ -6,7 +6,8 @@ use App\Models\Kategori;
 use App\Models\Produk;
 use App\Models\Member;
 use Illuminate\Http\Request;
-use DataTables;
+// use DataTables;
+use PDF;
 
 class ProdukController extends Controller
 {
@@ -97,5 +98,18 @@ class ProdukController extends Controller
         }
 
         return response(null, 204);
+    }
+
+    public function cetakbarcode(Request $request)
+    {
+        $dataproduk = array();
+        foreach ($request->id_produk as $id) {
+            $produk = Produk::find($id);
+            $dataproduk[] = $produk;
+        }
+
+        $pdf = PDF::loadView('produk.barcode', compact('dataproduk'));
+        $pdf->setPaper('a4', 'potrait');
+        return $pdf->stream('Cetak_Barcode');
     }
 }

@@ -19,6 +19,8 @@
                                 class="fa fa-plus-circle"></i> Tambah</button>
                         <button onclick="deleteselected('{{ route('produk.delete_selected') }}')" class="btn btn-danger"><i
                                 class="fa fa-plus-circle"></i> Hapus Item</button>
+                        <button onclick="cetak('{{ route('produk.cetak_barcode') }}')" class="btn btn-info"><i
+                                class="fa fa-plus-circle"></i> Cetak Barcode</button>
                     </div>
                 </div>
                 <div class="card-body table-responsive">
@@ -222,6 +224,21 @@
             } else {
                 swal("Informasi", "Pilih Data yang akan dihapus", "info");
                 return;
+            }
+        }
+
+        function cetak(url) {
+            if ($('input:checked').length < 1) {
+                swal("Informasi", "Pilih Data yang akan dicetak", "info");
+                return;
+            } else if ($('input:checked').length < 3) {
+                swal("Informasi", "Minimal 3 data agar bisa dicetak", "error");
+                return;
+            } else {
+                $('.form-produk')
+                    .attr('target', '_blank')
+                    .attr('action', url)
+                    .submit();
             }
         }
     </script>
