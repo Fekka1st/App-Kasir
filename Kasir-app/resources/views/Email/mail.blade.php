@@ -19,7 +19,7 @@
             </tr>
             <tbody>
                 @foreach ($produk as $item)
-                    @if ($item->stok <= 5)
+                    @if ($item->stok < 5)
                         <tr>
                             <td>{{ $item->kode_produk }}</td>
                             <td>{{ $item->nama_produk }}</td>
