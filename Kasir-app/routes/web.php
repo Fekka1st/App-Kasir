@@ -20,7 +20,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn () => redirect()->route('login'));
+Route::get('/', function ()
+{
+    return redirect()->route('login');
+});
+
+Route::get('/', function ()
+{
+    return view('LandingPage.master');
+});
+
+
+// Route::get('/login', fn () => redirect()->route('login'));
 
 Route::middleware([
     'auth:sanctum',
