@@ -18,7 +18,7 @@ class CreateMembersTable extends Migration
             $table->string('kode_member');
             $table->string('nama');
             $table->text('alamat');
-            $table->string('telpon', 20);
+            $table->string('telepon', 20);
             $table->timestamps();
         });
     }

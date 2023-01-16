@@ -1,43 +1,38 @@
 @extends('layouts.master')
 
 @section('title')
-    Daftar Pengeluaran
+    Supplier
 @endsection
 
 @section('rute')
     @parent
-    <li class="breadcrumb-item active">Daftar Pengeluaran</li>
+    <li class="breadcrumb-item active">Supplier</li>
 @endsection
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header with-border">
-                    <div class="btn-group">
-                        <button onclick="tambah('{{ route('pengeluaran.store') }}')" class="btn btn-success"><i
-                                class="fa fa-plus-circle"></i> Tambah</button>
-                    </div>
+                    <button onclick="tambah('{{ route('supplier.store') }}')" class="btn btn-success">Tambah</button>
                 </div>
                 <div class="card-body table-responsive">
-                    <form action="" method="post" class="form-produk">
-                        @csrf
-                        <table class="table table-stiped table-bordered">
-                            <thead>
-                                <th width="5%">No</th>
-                                <th>Tanggal</th>
-                                <th>Deskripsi</th>
-                                <th>Nominal</th>
-                                <th width="15%"><i class="fa fa-cog"></i></th>
-                            </thead>
-                        </table>
-                    </form>
+                    <table class="table table-striped table-bordered ">
+                        <thead>
+                            <th width="5%">No</th>
+                            <th>Nama Supplier</th>
+                            <th>Alamat</th>
+                            <th>Nomor Telepon</th>
+                            <th width="10$">Aksi</th>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 
-    @includeIf('pengeluaran.form')
+
+    @includeIf('supplier.form')
 @endsection
 
 @push('script')
@@ -45,12 +40,10 @@
         let table;
         $(function() {
             table = $('.table').DataTable({
-                responsive: true,
                 processing: true,
-                serverSide: true,
                 autoWidth: false,
                 ajax: {
-                    url: '{{ route('pengeluaran.data') }}',
+                    url: '{{ route('supplier.data') }}',
                 },
                 columns: [{
                         data: 'DT_RowIndex',
@@ -58,13 +51,13 @@
                         sortable: false
                     },
                     {
-                        data: 'created_at'
+                        data: 'nama'
                     },
                     {
-                        data: 'deskripsi'
+                        data: 'alamat'
                     },
                     {
-                        data: 'nominal'
+                        data: 'telpon'
                     },
                     {
                         data: 'aksi',
@@ -73,9 +66,14 @@
                     },
                 ]
             });
+
             $('#form').validator().on('submit', function(e) {
                 if (!e.preventDefault()) {
-                    $.post($('#form form').attr('action'), $('#form form').serialize())
+                    $.ajax({
+                            url: $('#form form').attr('action'),
+                            type: 'post',
+                            data: $('#form form').serialize(),
+                        })
                         .done((response) => {
                             $('#form').modal('hide');
                             swal("Berhasil", "Data Berhasil", "success");
@@ -84,43 +82,40 @@
                         .fail((errors) => {
                             swal("Gagal", "Data tidak bisa ditambahkan", "error");
                             return;
-                        });
+                        })
                 }
             });
         });
 
         function tambah(url) {
             $('#form').modal('show');
-            $('#formLabel').text('Tambah pengeluaran');
+            $('#formLabel').text('Tambah Supplier');
             $('#form form')[0].reset();
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('post');
-            $('#form [name=deskripsi]').focus();
-
+            $('#form [name=nama]').focus();
         }
 
-        function edit(url) {
+        function editForm(url) {
             $('#form').modal('show');
-            $('#formLabel').text('Edit Produk');
+            $('#formLabel').text('Edit Supplier');
             $('#form form')[0].reset();
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('put');
-            $('#form [name=deskripsi]').focus();
-
+            $('#form [name=nama]').focus();
             $.get(url)
                 .done((response) => {
-                    $('#form [name=deskripsi]').val(response.deskripsi);
-                    $('#form [name=nominal]').val(response.nominal);
-
+                    $('#form [name=nama]').val(response.nama);
+                    $('#form [name=telpon]').val(response.telpon);
+                    $('#form [name=alamat]').val(response.alamat);
                 })
                 .fail((errors) => {
-                    swal("Gagal", "Data tidak bisa ditambahkan", "error");
+                    alert('Tidak dapat menampilkan data');
                     return;
                 });
         }
 
-        function hapus(url) {
-
+        function deleteData(url) {
             swal({
                     title: "Apakah Kamu Yakin",
                     text: "Data terhapus tidak dapat kembali lagi",
@@ -142,7 +137,7 @@
                                 swal("Berhasil", "Dihapus", "success");
                             })
                             .fail((errors) => {
-
+                                swal("Gagal", "Data tidak bisa ditambahkan", "error");
                                 return;
                             })
                     } else {

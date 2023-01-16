@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('member.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-id-card"></i>
                         <p>
                             Member
@@ -77,7 +77,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('supplier.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-truck"></i>
                         <p>
                             Supplier

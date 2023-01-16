@@ -21,6 +21,8 @@
                                 class="fa fa-plus-circle"></i> Hapus Item</button>
                         <button onclick="cetak('{{ route('produk.cetak_barcode') }}')" class="btn btn-info"><i
                                 class="fa fa-plus-circle"></i> Cetak Barcode</button>
+                        <button onclick="request('{{ route('permintaan.barang') }}')" class="btn btn-light"><i
+                                class="fa fa-plus-circle"></i> Permintaan Barang </button>
                     </div>
                 </div>
                 <div class="card-body table-responsive">
@@ -114,7 +116,7 @@
                         })
                         .done((response) => {
                             $('#form').modal('hide');
-                            swal("Berhasil", "Data Berhasil", "success");
+                            swal("Berhasil", response.success);
                             table.ajax.reload();
                         })
                         .fail((errors) => {
@@ -133,7 +135,7 @@
         function tambah(url) {
             $('#form').modal('show');
             $('#formLabel').text('Tambah Produk');
-            $('#form form')[0].reset();
+            
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('post');
             $('#form [name=nama_produk]').focus();
@@ -165,10 +167,7 @@
         }
 
         function hapus(url) {
-            // if (confirm('Ingin hapus data ?')) {
-            //    
-            // }
-
+        
             swal({
                     title: "Apakah Kamu Yakin",
                     text: "Data terhapus tidak dapat kembali lagi",
@@ -240,6 +239,14 @@
                     .attr('action', url)
                     .submit();
             }
+        }
+
+        function request(url) {
+            $.get(url)
+                .done((response) => {
+                    swal("Informasi", "Permintaan sudah terkirim melalui Email", "info");
+                return;
+            });
         }
     </script>
 @endpush
