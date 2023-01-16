@@ -3,6 +3,7 @@
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SendEmail;
 use Illuminate\Support\Facades\Route;
 
 
@@ -40,4 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
     Route::resource('/pengeluaran', PengeluaranController::class);
+    Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');
 });
+
+// Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');
