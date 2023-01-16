@@ -116,7 +116,7 @@
                         })
                         .done((response) => {
                             $('#form').modal('hide');
-                            swal("Berhasil", "Data Berhasil", "success");
+                            swal("Berhasil", response.success);
                             table.ajax.reload();
                         })
                         .fail((errors) => {
@@ -135,7 +135,7 @@
         function tambah(url) {
             $('#form').modal('show');
             $('#formLabel').text('Tambah Produk');
-            $('#form form')[0].reset();
+            
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('post');
             $('#form [name=nama_produk]').focus();
