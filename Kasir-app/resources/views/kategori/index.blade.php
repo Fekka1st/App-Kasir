@@ -29,9 +29,9 @@
             </div>
         </div>
     </div>
-@endsection
 
-@includeIf('kategori.form')
+    @includeIf('kategori.form')
+@endsection
 
 @push('script')
     <script>
