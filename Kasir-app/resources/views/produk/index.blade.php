@@ -167,10 +167,7 @@
         }
 
         function hapus(url) {
-            // if (confirm('Ingin hapus data ?')) {
-            //    
-            // }
-
+        
             swal({
                     title: "Apakah Kamu Yakin",
                     text: "Data terhapus tidak dapat kembali lagi",
