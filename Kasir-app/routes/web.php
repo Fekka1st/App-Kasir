@@ -4,11 +4,8 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\ProdukController;
-<<<<<<< HEAD
 use App\Http\Controllers\MemberController;
-=======
 use App\Http\Controllers\SendEmail;
->>>>>>> ec8b79262249def4c1c525be34a66e0eecb8d62f
 use Illuminate\Support\Facades\Route;
 
 

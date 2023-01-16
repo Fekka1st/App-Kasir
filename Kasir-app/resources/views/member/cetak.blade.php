@@ -6,66 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cetak Kartu Member </title>
-    <style>
-        .box {
-            position: relative;
-        }
-        .card {
-            width: 85.60mm;
-        }
-        .logo {
-            position: absolute;
-            top: 3pt;
-            right: 0pt;
-            font-size: 16pt;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: bold;
-            color: #fff !important;
-        }
-        .logo p {
-            text-align: right;
-            margin-right: 16pt;
-        }
-        .logo img {
-            position: absolute;
-            margin-top: -5pt;
-            width: 40px;
-            height: 40px;
-            right: 16pt;
-        }
-        .nama {
-            position: absolute;
-            top: 100pt;
-            right: 16pt;
-            font-size: 12pt;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: bold;
-            color: #fff !important;
-        }
-        .telpon {
-            position: absolute;
-            margin-top: 120pt;
-            right: 16pt;
-            color: #fff;
-        }
-        .barcode {
-            position: absolute;
-            top: 105pt;
-            left: .860rem;
-            border: 1px solid #fff;
-            padding: .5px;
-            background: #fff;
-        }
-        .text-left {
-            text-align: left;
-        }
-        .text-right {
-            text-align: right;
-        }
-        .text-center {
-            text-align: center;
-        }
-    </style>
 </head>
 
 <body>
@@ -77,11 +17,6 @@
                     @foreach ($data as $item)
                         <td class="text-center">
                             <div class="box">
-                            <!-- <img src="{{ kasir-app(public/img/member.png) }}" alt="card" width="50%">
-                                <div class="logo">
-                                    <p>{{ config(app.name) }}</p>
-                                    <img src="{{ () }}" alt="logo"> -->
-                            
                                 <div class="nama">{{ $item->nama }}</div>
                                 <div class="telepon">{{ $item->telepon }}</div>
                                 <div class="barcode text-left">

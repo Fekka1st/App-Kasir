@@ -36,6 +36,7 @@
                                 <th width="13%">Aksi</th>
                             </thead>
                         </table>
+                    </form>
                 </div>
             </div>
         </div>

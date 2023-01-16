@@ -25,9 +25,9 @@ class MemberController extends Controller
         return datatables()
             ->of($member)
             ->addIndexColumn()
-            ->addColumn('select_all', function ($produk) {
+            ->addColumn('select_all', function ($Member) {
                 return '
-                    <input type="checkbox" name="id_member[]" value="' . $produk->id_member . '">
+                    <input type="checkbox" name="id_member[]" value="' . $Member->id_member . '">
                 ';
             })
             ->addColumn('kode_member', function ($member) {
@@ -36,8 +36,8 @@ class MemberController extends Controller
             ->addColumn('aksi', function ($member) {
                 return '
                 <div class="btn-group">
-                    <button type="button" onclick="edit(`' . route('member.update', $member->id_member) . '`)" class="btn btn-xs btn-info btn-flat">Edit</button>
-                    <button type="button" onclick="hapus(`' . route('member.destroy', $member->id_member) . '`)" class="btn btn-xs btn-danger btn-flat">Hapus</button>
+                    <button type="button" onclick="edit(`' . route('member.update', $member->id_member) . '`)" class="btn btn-xs btn-info btn-flat">edit</button>
+                    <button type="button" onclick="hapus(`' . route('member.destroy', $member->id_member) . '`)" class="btn btn-xs btn-danger btn-flat">hapus</button>
                 </div>
                 ';
             })
@@ -63,14 +63,10 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $member = Member::latest()->first() ?? new Member();
-        $kode_member = (int) $member->kode_member + 1;
+        $request['kode_member'] = 'M'.tambah_nol_didepan((int)$member->id_member + 1, 6);
 
-        $member = new Member();
-        $member->kode_member = tambah_nol_didepan($kode_member, 5);
-        $member->nama = $request->nama;
-        $member->alamat = $request->alamat;
-        $member->telpon = $request->telpon;
-        $member->save();
+        $member = Member::create($request->all());
+
         return response()->json('Data berhasil disimpan', 200);
     }
 
