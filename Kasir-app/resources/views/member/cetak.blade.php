@@ -1,41 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cetak Kartu Member</title>
+    <title>Cetak Kartu Member </title>
+    <style>
+        .box {
+            position: relative;
+        }
+        .card {
+            width: 85.60mm;
+        }
+        .logo {
+            position: absolute;
+            top: 3pt;
+            right: 0pt;
+            font-size: 16pt;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: #fff !important;
+        }
+        .logo p {
+            text-align: right;
+            margin-right: 16pt;
+        }
+        .logo img {
+            position: absolute;
+            margin-top: -5pt;
+            width: 40px;
+            height: 40px;
+            right: 16pt;
+        }
+        .nama {
+            position: absolute;
+            top: 100pt;
+            right: 16pt;
+            font-size: 12pt;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            color: #fff !important;
+        }
+        .telpon {
+            position: absolute;
+            margin-top: 120pt;
+            right: 16pt;
+            color: #fff;
+        }
+        .barcode {
+            position: absolute;
+            top: 105pt;
+            left: .860rem;
+            border: 1px solid #fff;
+            padding: .5px;
+            background: #fff;
+        }
+        .text-left {
+            text-align: left;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
-        <section style="border: 1px solid #fff">
-            <table width="100px">
-                @foreach ($datamember as $key => data)
-                    <tr>
-                        @foreach ($data as $item)
-                            <td class="text-center" with="50%">
-                                <div class="box">
-                                    <img src="{{ assets('/public/images/member.png') }}" alt="card">
-                                    <div class="logo">
-                                        <p>{{ config('app.name') }}</p>
-                                            <img src="{{ assets('/public/images/logo.png') }}" alt="logo">
-                                </div>
-                                <div class="namaa"> {{ $item->nama }} </div>
-                                <div class="telepon"> {{ $item->telepon }} </div>
+    {{-- bikin layout untuk kode member serapih mungkin --}}
+    <section style="border: 1px solid #fff">
+        <table width="100%">
+            @foreach ($datamember as $key => $data)
+                <tr>
+                    @foreach ($data as $item)
+                        <td class="text-center">
+                            <div class="box">
+                            <!-- <img src="{{ kasir-app(public/img/member.png) }}" alt="card" width="50%">
+                                <div class="logo">
+                                    <p>{{ config(app.name) }}</p>
+                                    <img src="{{ () }}" alt="logo"> -->
+                            
+                                <div class="nama">{{ $item->nama }}</div>
+                                <div class="telepon">{{ $item->telepon }}</div>
                                 <div class="barcode text-left">
-                                    <img src="data: image/png;base64,  {{ DNS20::getBarcodePNG("$item->kode_member",
-                                        'QRCODE') }}"alt="qrcode"
-                                            height="45"
-                                            widt="45">
-                                    </div>
+                                    <img src="data:image/png;base64, {{ DNS2D::getBarcodePNG("$item->kode_member", 'QRCODE') }}"
+                                        alt="qrcode" height="45" widht="45">
                                 </div>
-                            </td>
-                        @endforeach
-                    </tr>
+                            </div>
+                        </td>
+
+                        @if (count($datamember) == 1)
+                            <td class="text-center" style="width: 50%;"></td>
+                        @endif
                     @endforeach
-            </table>
-        </section>
-
-
-    
+                </tr>
+            @endforeach
+        </table>
+    </section>
 </body>
+
 </html>

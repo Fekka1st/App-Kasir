@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+
 use PDF;
 
 class MemberController extends Controller
@@ -21,26 +22,26 @@ class MemberController extends Controller
     {
         $member = Member::orderBy('kode_member')->get();
 
-        return dataTables()
+        return datatables()
             ->of($member)
             ->addIndexColumn()
             ->addColumn('select_all', function ($produk) {
                 return '
-                <input type="checkbox" name="id_member[]" value="'. $produk->id_produk .'">
+                    <input type="checkbox" name="id_member[]" value="' . $produk->id_member . '">
                 ';
             })
-
             ->addColumn('kode_member', function ($member) {
-                return '<span class="label badge-success">' .$member->kode_member .'<span>';
+                return '<span class="label label-success">' . $member->kode_member . '<span>';
             })
             ->addColumn('aksi', function ($member) {
-                return
-                    '<div class="btn-group">
-                    <button onclick="edit(`' . route('member.update', $member->id_member) . '`)" type="button" class="btn btn-info btn-flat"><i class="fas fa-edit"></i>Edit</button>
-                    <button onclick="hapus(`' . route('member.destroy', $member->id_member) . '`)"  type="button" class="btn btn-danger btn-flat"> <i class="fas fa-trash"></i>Hapus</button>
-                    </div>';
+                return '
+                <div class="btn-group">
+                    <button type="button" onclick="edit(`' . route('member.update', $member->id_member) . '`)" class="btn btn-xs btn-info btn-flat">Edit</button>
+                    <button type="button" onclick="hapus(`' . route('member.destroy', $member->id_member) . '`)" class="btn btn-xs btn-danger btn-flat">Hapus</button>
+                </div>
+                ';
             })
-            ->rawColumns(['aksi' ,'select_all', 'kode_member'])
+            ->rawColumns(['aksi', 'select_all', 'kode_member'])
             ->make(true);
     }
     /**
@@ -61,23 +62,16 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $member = Member::latest()->first();
-        $kode_member = $member->kode_member ?? 1;
+        $member = Member::latest()->first() ?? new Member();
+        $kode_member = (int) $member->kode_member + 1;
 
-        
-        $request['kode_member'] = 'P' . ('0000000076');
-        
         $member = new Member();
         $member->kode_member = tambah_nol_didepan($kode_member, 5);
-        $member->kode_member = $request->kode_member;
         $member->nama = $request->nama;
         $member->alamat = $request->alamat;
         $member->telpon = $request->telpon;
         $member->save();
-
-
         return response()->json('Data berhasil disimpan', 200);
-        return $member; 
     }
 
     /**
@@ -110,11 +104,12 @@ class MemberController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Member $member)
+    public function update(Request $request, $id)
     {
-        $member = Member::find($id)->update($request->all());
+        $member = Member::find($id);
+        $member->update($request->all());
 
-        return response()->json('Data berhasil diupdate', 200);
+        return response()->json('Data berhasil disimpan', 200);
     }
 
     /**
@@ -128,22 +123,22 @@ class MemberController extends Controller
         $member = Member::find($id);
         $member->delete();
         return response()->json(null, 204);
-}
+    }
 
-    public function cetakMember(Request $request)
+    public function cetakmember(Request $request)
     {
-        $datamember = array();
-            foreach ($request->id_member as $id) {  
+        $datamember = collect(array());
+        foreach ($request->id_member as $id) {
             $member = Member::find($id);
             $datamember[] = $member;
-
         }
-        $datamember =  $datamember(2);
-     return $datamember;
 
-        $no = 1;
+        $datamember = $datamember->chunk(2);
+
+
+        $no  = 1;
         $pdf = PDF::loadView('member.cetak', compact('datamember', 'no'));
-        $pdf->setPaper('a4', 'potrait');
+        $pdf->setPaper(array(0, 0, 566.93, 850.39), 'potrait');
         return $pdf->stream('member.pdf');
     }
 }

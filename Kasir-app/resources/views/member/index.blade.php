@@ -16,32 +16,33 @@
                 <div class="card-header with-border">
                     <button onclick="tambah('{{ route('member.store') }}')" class="btn btn-success"><i
                             class="fa fa-plus-circle"></i> Tambah</button>
-                            <button onclick="cetakMember('{{ route('member.cetak_member') }}')" class="btn btn-danger"><i
+                    <button onclick="cetakmember('{{ route('member.cetak_member') }}')" class="btn btn-danger"><i
                             class="fa fa-id-card"></i> Cetak Member</button>
-                            
+
                 </div>
                 <div class="box-body table-responsive">
                     <form action=" " method="post" class="form-member">
                         @csrf
-                    <table class="table table-striped table-bordered ">
-                        <thead>
-                            <th width="5%">
+                        <table class="table table-striped table-bordered ">
+                            <thead>
+                                <th width="5%">
                                     <input type="checkbox" name="select_all" id="select_all">
-                            </th>
-                            <th>No</th>
-                            <th>Kode Member</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>Telpon</th>
-                            <th width="13%">Aksi</th>
-                        </thead>
-                    </table>
+                                </th>
+                                <th>No</th>
+                                <th>Kode Member</th>
+                                <th>Nama</th>
+                                <th>Alamat</th>
+                                <th>Telpon</th>
+                                <th width="13%">Aksi</th>
+                            </thead>
+                        </table>
                 </div>
             </div>
         </div>
     </div>
 
-@includeIf('member.form')
+
+    @includeIf('member.form')
 @endsection
 
 @push('script')
@@ -64,10 +65,18 @@
                         searchable: false,
                         sortable: false
                     },
-                        {data: 'kode_member'},
-                        {data: 'nama'},
-                        {data: 'alamat'},
-                        {data: 'telpon'},
+                    {
+                        data: 'kode_member'
+                    },
+                    {
+                        data: 'nama'
+                    },
+                    {
+                        data: 'alamat'
+                    },
+                    {
+                        data: 'telpon'
+                    },
                     {
                         data: 'aksi',
                         searchable: false,
@@ -115,15 +124,14 @@
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('put');
             $('#form [name=nama]').focus();
-
             $.get(url)
                 .done((response) => {
                     $('#form [name=nama]').val(response.nama);
+                    $('#form [name=telpon]').val(response.telpon);
                     $('#form [name=alamat]').val(response.alamat);
-                    $('#form [name=telpon]').val(response.telepon);
                 })
                 .fail((errors) => {
-                    swal("Gagal", "Data tidak bisa ditambahkan", "error");
+                    alert('Tidak dapat menampilkan data');
                     return;
                 });
         }
@@ -161,18 +169,18 @@
                         swal("Silahkan Pikirkan lagi");
                     }
                 });
+        }
+
+        function cetakmember(url) {
+            if ($('input:checked').length < 1) {
+                alert('Pilih data yang akan dicetak');
+                return;
+            } else {
+                $('.form-member')
+                    .attr('target', '._blank')
+                    .attr('action', url)
+                    .submit();
             }
-        
-            function cetakMember(url) {
-                if ($('input:checked').length < 1) {
-                        alert('Pilih data yang akan dicetak');
-                        return;
-                } else {
-                        $('.form-member')
-                        .attr('target', '._blank')
-                        .attr('action', url)
-                        .submit();
-                }
         }
     </script>
 @endpush
