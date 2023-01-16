@@ -1,0 +1,248 @@
+*{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* navbar */
+
+.nav-item{
+    padding-right: 30px;
+}
+
+.navbar a{
+    color: white;
+}
+
+.navbar a:hover{
+    color: rgb(255, 166, 103);
+}
+
+.bg{
+    background-color: #024959;
+}
+
+.navbar .navbar-brand img{
+    width: 35px;
+}
+
+.navbar h3{
+    color: beige;
+}
+
+/* search */
+.d-flex input{
+    width: 75px;
+    height: 35px;
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+/* carousel */
+
+.carousel-item{
+    height: 100vh;
+    background-size: cover;
+}
+
+.carousel-item::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: black;
+    opacity: 0.4;
+}
+
+.carousel-caption h3{
+    margin-top: -230px;
+    animation-name: capt;
+    animation-timing-function: ease-in;
+    transition-duration: 2s;
+}
+
+.carousel-caption{
+    text-shadow: 5px 5px 8px black;
+}
+
+@keyframes capt {
+    from {top: 0px;}
+    to {top: 300px;}
+}
+
+/* content */
+
+.card h1{
+    color: #664D37;
+}
+
+.card-title{
+    text-align: center;
+}
+
+.card{
+    margin: 90px 0;
+    padding: 30px;
+}
+
+.card-text{
+    margin: 20px 0;
+}
+
+section{
+    box-shadow: 0 5px 8px 1px rgba(0, 0, 0, .3);
+}
+
+/* Information */
+
+#information .card{
+    text-align: justify;
+}
+
+#information .desc p{
+    color: #706513;
+}
+
+#information .socmed p{
+    color: #024959;
+}
+
+.card h5{
+    text-align: center;
+}
+
+#information .socmed a{
+    text-decoration: none;
+    color: #593E25;
+    font-size: 20px;
+}
+
+#information .socmed{
+    margin-top: 50px;
+}
+
+/* profil */
+#profile video{
+    box-shadow: 0 5px 8px 1px rgba(0, 0, 0, .3);
+    width: 85%;
+    margin: auto;
+}
+
+/* location */
+#location iframe{
+    width: 800px;
+    display: block;
+    margin: 30px auto;
+}
+
+/* Shop */
+#shop img{
+    box-shadow: 0 5px 8px 1px rgba(0, 0, 0, .3);
+}
+
+#shop .row .card{
+    margin-top: 20px;
+}
+
+#shop .card-body{
+    border-style: solid;
+    border-width: 1px;
+    border-color: darkgrey;
+    border-radius: 10px;
+    padding: 25px 20px;
+}
+
+#shop .card-text{
+    margin: 25px 0;
+}
+
+#shop .card-text p{
+    color: #593E25;
+}
+
+#shop .card-text span{
+    text-align: left;
+}
+
+#shop h1{
+    color: #664D37;
+}
+
+#shop span a{
+    text-decoration: none;
+    color: #593E25;
+    font-size: 20px;
+}
+
+#shop .col-md-3{
+    margin: 25px 0;
+}
+
+#shop .btn{
+    background-color: #706513;
+    border: #706513;
+}
+
+/* Owner */
+#owner figure img{
+    width: 210px;
+    padding: 20px;
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+}
+
+#owner .col-md-8 table{
+    margin: 35px auto 0;
+    padding: 50px;
+}
+
+#owner .col-md-8 table td{
+    padding-right: 40px;
+    font-size: 25px;
+}
+
+#owner h1{
+    color: #664D37;
+}
+
+/* Footer */
+footer{
+    background-color: #024959;
+    color: beige;
+    padding: 20px 0;
+}
+
+/* back to top button */
+.backtop{
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    opacity: 60%;
+}
+
+.backtop:hover{
+    opacity: 100%;
+}
+
+.backtop img{
+    width: 70px;
+}
+
+@media screen and (max-width: 1000px){
+
+    .carousel{
+        height: 100%;
+    }
+
+    .carousel-item{
+        height: 50%;
+    }
+
+    .carousel-item img{
+        height: 100%;
+    }
+}
