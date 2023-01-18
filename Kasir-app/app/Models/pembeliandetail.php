@@ -11,4 +11,9 @@ class pembeliandetail extends Model
     protected $table = 'pembeliandetails';
     protected $primaryKey = 'id_pembelian_detail';
     protected $guarded = [];
+
+    public function produk()
+    {
+        return $this->hasMany(Produk::class, 'id_produk', 'id_produk');
+    }
 }

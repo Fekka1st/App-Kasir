@@ -28,7 +28,8 @@
                                     <td>{{ $item->nama_produk }}</td>
                                     <td>{{ $item->harga_beli }}</td>
                                     <td>
-                                        <a href="" class="btn btn-primary btn-xs btn-flat">
+                                        <a href="" class="btn btn-primary btn-xs btn-flat"
+                                            onclick="pilihProduk('{{ $item->id_produk }}', '{{ $item->kode_produk }}')">
                                             <i class="fa fa-check-circle"></i>
                                             Pilih
                                         </a>

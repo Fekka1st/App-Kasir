@@ -166,10 +166,33 @@
             $('#produk').modal('show');
         }
 
+        function hideProduk() {
+            $('#produk').modal('hide');
+        }
+
+        function pilihProduk(id, kode) {
+            $('#id_produk').val(id);
+            $('#kode_produk').val(kode);
+            hideProduk();
+            tambahProduk();
+        }
+
         function tampilDetail(url) {
             $('#detail').modal('show');
             table1.ajax.url(url);
             table1.ajax.reload();
+        }
+
+        function tambahProduk() {
+            $.post('{{ route('pembelian_detail.store') }}', $('.form-produk').serialize())
+                .done(response => {
+                    $('#kode_produk').focus();
+                    table.ajax.reload(() => loadForm($('#diskon').val()));
+                })
+                .fail(errors => {
+                    swal("Gagal", "Tidak dapat menyimpan data", "error");
+                    return;
+                });
         }
 
         function deleteData(url) {
