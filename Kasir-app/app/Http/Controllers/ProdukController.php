@@ -22,7 +22,7 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $produk = Produk::latest()->first() ?? new Produk();
-        $request['kode_produk'] = 'P'.tambah_nol_didepan((int)$produk->id_produk + 1, 6);
+        $request['kode_produk'] = 'P' . tambah_nol_didepan((int)$produk->id_produk + 1, 6);
 
         $produk = Produk::create($request->all());
 
@@ -59,8 +59,8 @@ class ProdukController extends Controller
             ->addColumn('aksi', function ($produk) {
                 return '
                 <div class="btn-group">
-                    <button type="button" onclick="edit(`' . route('produk.update', $produk->id_produk) . '`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-pencil"></i>edit</button>
-                    <button type="button" onclick="hapus(`' . route('produk.destroy', $produk->id_produk) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i>hapus</button>
+                    <button type="button" onclick="edit(`' . route('produk.update', $produk->id_produk) . '`)" class="btn btn-info "><i class="fas fa-pen"></i></button>
+                    <button type="button" onclick="hapus(`' . route('produk.destroy', $produk->id_produk) . '`)" class="btn btn-danger "><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })

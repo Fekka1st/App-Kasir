@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <h1 style="text-align: center;">CETAK BARCODE</h1>
     <table width="100%">
         <tr>
             @foreach ($dataproduk as $no => $data)

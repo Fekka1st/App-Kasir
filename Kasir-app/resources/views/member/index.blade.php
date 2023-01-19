@@ -14,11 +14,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header with-border">
-                    <button onclick="tambah('{{ route('member.store') }}')" class="btn btn-success"><i
-                            class="fa fa-plus-circle"></i> Tambah</button>
-                    <button onclick="cetakmember('{{ route('member.cetak_member') }}')" class="btn btn-danger"><i
-                            class="fa fa-id-card"></i> Cetak Member</button>
-
+                    <div class="btn-group">
+                        <button onclick="tambah('{{ route('member.store') }}')" class="btn btn-success"><i
+                                class="fa fa-plus-circle"></i> Tambah</button>
+                        <button onclick="cetakmember('{{ route('member.cetak_member') }}')" class="btn btn-danger"><i
+                                class="fa fa-id-card"></i> Cetak Member</button>
+                    </div>
                 </div>
                 <div class="box-body table-responsive">
                     <form action=" " method="post" class="form-member">
@@ -33,7 +34,7 @@
                                 <th>Nama</th>
                                 <th>Alamat</th>
                                 <th>Telpon</th>
-                                <th width="13%">Aksi</th>
+                                <th width="13%"><i class="fas fa-cogs"></i></th>
                             </thead>
                         </table>
                     </form>
@@ -105,6 +106,9 @@
                         })
                 }
             });
+            $('[name=select_all]').on('click', function() {
+                $(':checkbox').prop('checked', this.checked);
+            })
         });
 
 

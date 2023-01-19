@@ -36,8 +36,8 @@ class SupplierController extends Controller
             ->addColumn('aksi', function ($supplier) {
                 return '
                 <div class="btn-group">
-                    <button type="button" onclick="editForm(`' . route('supplier.update', $supplier->id_supplier) .'`)" class="btn btn-info btn-flat">Edit</button>
-                    <button type="button" onclick="deleteData(`' . route('supplier.destroy', $supplier->id_supplier) .'`)" class="btn btn-danger btn-flat">Hapus</button>
+                    <button type="button" onclick="editForm(`' . route('supplier.update', $supplier->id_supplier) .'`)" class="btn btn-info "><i class="fas fa-pen"></i></button>
+                    <button type="button" onclick="deleteData(`' . route('supplier.destroy', $supplier->id_supplier) .'`)"class="btn btn-danger "><i class="fa fa-trash"></i></button>
                 </div>';
             })
             ->rawColumns(['aksi'])

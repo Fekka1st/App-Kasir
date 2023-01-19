@@ -29,8 +29,8 @@ class PengeluaranController extends Controller
             ->addColumn('aksi', function ($pengeluaran) {
                 return '
                 <div class="btn-group">
-                    <button type="button" onclick="edit(`' . route('pengeluaran.update', $pengeluaran->id_pengeluaran) . '`)" class="btn btn-xs btn-info btn-flat">Edit</button>
-                    <button type="button" onclick="hapus(`' . route('pengeluaran.destroy', $pengeluaran->id_pengeluaran) . '`)" class="btn btn-xs btn-danger btn-flat">Hapus</button>
+                    <button type="button" onclick="edit(`' . route('pengeluaran.update', $pengeluaran->id_pengeluaran) . '`)" class="btn btn-info "><i class="fas fa-pen"></i></button>
+                    <button type="button" onclick="hapus(`' . route('pengeluaran.destroy', $pengeluaran->id_pengeluaran) . '`)" class="btn btn-danger "><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })
