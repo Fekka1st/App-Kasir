@@ -25,7 +25,7 @@
                 <div class="card-body table-responsive">
                     <form action="" method="post" class="form-produk">
                         @csrf
-                        <table class="table table-stiped table-bordered tabel-pembelian">
+                        <table class="table table-stiped table-bordered table-pembelian">
                             <thead>
                                 <th width="5%">No</th>
                                 <th>Tanggal</th>
@@ -52,7 +52,7 @@
     <script>
         let table, table1;
         $(function() {
-            table = $('.tabel-pembelian').DataTable({
+            table = $('.table-pembelian').DataTable({
                 responsive: true,
                 processing: true,
                 serverSide: true,
@@ -90,11 +90,11 @@
                     },
                 ]
             });
-
             $('.table-supplier').DataTable();
             table1 = $('.table-detail').DataTable({
                 processing: true,
                 bSort: false,
+                dom: 'Brt',
                 columns: [{
                         data: 'DT_RowIndex',
                         searchable: false,
@@ -119,11 +119,12 @@
             })
         });
 
+
         function tambah() {
             $('#supplier').modal('show');
         }
 
-        function tampil(url) {
+        function showDetail(url) {
             $('#detail').modal('show');
             table1.ajax.url(url);
             table1.ajax.reload();
