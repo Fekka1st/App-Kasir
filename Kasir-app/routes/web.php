@@ -4,6 +4,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\SendEmail;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
     Route::resource('/pengeluaran', PengeluaranController::class);
     Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');
+
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    // Route::post('/laporan', [LaporanController::class, 'refresh'])->name('laporan.refresh');
+    Route::get('/laporan/data/{awal}/{akhir}', [LaporanController::class, 'data'])->name('laporan.data');
+    Route::get('/laporan/pdf/{awal}/{akhir}', [LaporanController::class, 'exportPDF'])->name('laporan.export_pdf');
 });
 
 // Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');

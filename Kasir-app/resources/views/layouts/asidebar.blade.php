@@ -133,8 +133,8 @@
                 </li>
                 <li class="nav-header">Report</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-file-archive"></i>
+                    <a href="{{ route('laporan.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-file-pdf"></i>
                         <p>
                             Laporan
                             {{-- <span class="right badge badge-danger">New</span> --}}
