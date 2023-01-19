@@ -17,7 +17,7 @@
                     <div class="btn-group">
                         <button onclick="tambah()" class="btn btn-success"><i class="fa fa-plus-circle"></i> Transaksi</button>
                         @empty(!session('id_pembelian'))
-                            <a href="{{ route('pembelian_detail.index') }}" class="btn btn-info"><i class="fa fa-pencil"></i>
+                            <a href="{{ route('pembelian_detail.index') }}" class="btn btn-info"><i class="fas fa-star"></i>
                                 Transaksi Aktif</a>
                         @endempty
                     </div>
@@ -34,7 +34,7 @@
                                 <th>Total Harga</th>
                                 <th>Diskon</th>
                                 <th>Total Bayar</th>
-                                <th width="15%"><i class="fa fa-cog"></i></th>
+                                <th width="15%"><i class="fas fa-cogs"></i></i></th>
                             </thead>
                         </table>
                     </form>
@@ -90,11 +90,11 @@
                     },
                 ]
             });
+
             $('.table-supplier').DataTable();
             table1 = $('.table-detail').DataTable({
                 processing: true,
                 bSort: false,
-                dom: 'Brt',
                 columns: [{
                         data: 'DT_RowIndex',
                         searchable: false,
@@ -123,13 +123,13 @@
             $('#supplier').modal('show');
         }
 
-        function tampilDetail(url) {
+        function tampil(url) {
             $('#detail').modal('show');
             table1.ajax.url(url);
             table1.ajax.reload();
         }
 
-        function deleteData(url) {
+        function hapus(url) {
             swal({
                     title: "Apakah Kamu Yakin",
                     text: "Data terhapus tidak dapat kembali lagi",

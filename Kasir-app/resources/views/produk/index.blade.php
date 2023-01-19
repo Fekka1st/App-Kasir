@@ -18,11 +18,11 @@
                         <button onclick="tambah('{{ route('produk.store') }}')" class="btn btn-success"><i
                                 class="fa fa-plus-circle"></i> Tambah</button>
                         <button onclick="deleteselected('{{ route('produk.delete_selected') }}')" class="btn btn-danger"><i
-                                class="fa fa-plus-circle"></i> Hapus Item</button>
+                                class="fas fa-trash"></i></i> Hapus Item</button>
                         <button onclick="cetak('{{ route('produk.cetak_barcode') }}')" class="btn btn-info"><i
-                                class="fa fa-plus-circle"></i> Cetak Barcode</button>
+                                class="fas fa-print"></i> Cetak Barcode</button>
                         <button onclick="request('{{ route('permintaan.barang') }}')" class="btn btn-light"><i
-                                class="fa fa-plus-circle"></i> Permintaan Barang </button>
+                                class="fas fa-inbox"></i> Permintaan Barang </button>
                     </div>
                 </div>
                 <div class="card-body table-responsive">
@@ -42,7 +42,7 @@
                                 <th>Harga Jual</th>
                                 <th>Diskon</th>
                                 <th>Stok</th>
-                                <th width="15%"><i class="fa fa-cog"></i></th>
+                                <th width="15%"><i class="fas fa-cogs"></i></th>
                             </thead>
                         </table>
                     </form>
@@ -116,7 +116,7 @@
                         })
                         .done((response) => {
                             $('#form').modal('hide');
-                            swal("Berhasil", response.success);
+                            swal("Berhasil", "Data Ditambahkan", "success");
                             table.ajax.reload();
                         })
                         .fail((errors) => {
@@ -135,7 +135,7 @@
         function tambah(url) {
             $('#form').modal('show');
             $('#formLabel').text('Tambah Produk');
-            
+
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('post');
             $('#form [name=nama_produk]').focus();
@@ -167,7 +167,7 @@
         }
 
         function hapus(url) {
-        
+
             swal({
                     title: "Apakah Kamu Yakin",
                     text: "Data terhapus tidak dapat kembali lagi",
@@ -245,8 +245,8 @@
             $.get(url)
                 .done((response) => {
                     swal("Informasi", "Permintaan sudah terkirim melalui Email", "info");
-                return;
-            });
+                    return;
+                });
         }
     </script>
 @endpush

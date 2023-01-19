@@ -25,6 +25,15 @@ class PembelianController extends Controller
         return datatables()
             ->of($pembelian)
             ->addIndexColumn()
+            ->addColumn('total_item', function ($pembelian) {
+                return format_uang($pembelian->total_item);
+            })
+            ->addColumn('total_harga', function ($pembelian) {
+                return 'Rp. ' . format_uang($pembelian->total_harga);
+            })
+            ->addColumn('bayar', function ($pembelian) {
+                return 'Rp. ' . format_uang($pembelian->bayar);
+            })
             ->addColumn('tanggal', function ($pembelian) {
                 return format_date($pembelian->created_at, false);
             })
@@ -37,8 +46,8 @@ class PembelianController extends Controller
             ->addColumn('aksi', function ($pembelian) {
                 return '
                 <div class="btn-group">
-                    <button onclick="tampildetail(`' . route('pembelian.show', $pembelian->id_pembelian) . '`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-eye"></i></button>
-                    <button onclick="hapus(`' . route('pembelian.destroy', $pembelian->id_pembelian) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+                    <button  type="button" onclick="tampil(`' . route('pembelian.show', $pembelian->id_pembelian) . '`)" class="btn btn-info "><i class="fa fa-eye"></i></button>
+                    <button type="button" onclick="hapus(`' . route('pembelian.destroy',  $pembelian->id_pembelian) . '`)" class="btn btn-danger "><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })

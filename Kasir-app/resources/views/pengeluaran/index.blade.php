@@ -28,7 +28,7 @@
                                 <th>Tanggal</th>
                                 <th>Deskripsi</th>
                                 <th>Nominal</th>
-                                <th width="15%"><i class="fa fa-cog"></i></th>
+                                <th width="15%"><i class="fas fa-cogs"></i></i></th>
                             </thead>
                         </table>
                     </form>
