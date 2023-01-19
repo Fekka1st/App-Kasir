@@ -16,20 +16,17 @@
                 <div class="card-header with-border">
                     <div class="btn-group">
                         <button onclick="tambah()" class="btn btn-success"><i class="fa fa-plus-circle"></i> Transaksi</button>
-                        {{-- @empty(!session('id_pembelian'))
-                            <a href="{{ route('pembelian_detail.index') }}" class="btn btn-info "><i class="fa fa-pencil"></i>
+                        @empty(!session('id_pembelian'))
+                            <a href="{{ route('pembelian_detail.index') }}" class="btn btn-info"><i class="fa fa-pencil"></i>
                                 Transaksi Aktif</a>
-                        @endempty --}}
+                        @endempty
                     </div>
                 </div>
                 <div class="card-body table-responsive">
                     <form action="" method="post" class="form-produk">
                         @csrf
-                        <table class="table table-stiped table-bordered">
+                        <table class="table table-stiped table-bordered tabel-pembelian">
                             <thead>
-                                <th width="5%">
-                                    <input type="checkbox" name="select_all" id="select_all">
-                                </th>
                                 <th width="5%">No</th>
                                 <th>Tanggal</th>
                                 <th>Supplier</th>
@@ -53,54 +50,73 @@
 
 @push('script')
     <script>
-        let table;
+        let table, table1;
         $(function() {
-            table = $('.table').DataTable({
+            table = $('.tabel-pembelian').DataTable({
+                responsive: true,
                 processing: true,
+                serverSide: true,
                 autoWidth: false,
-                // ajax: {
-                //     url: '{{ route('supplier.data') }}',
-                // },
-                // columns: [{
-                //         data: 'DT_RowIndex',
-                //         searchable: false,
-                //         sortable: false
-                //     },
-                //     {
-                //         data: 'nama'
-                //     },
-                //     {
-                //         data: 'alamat'
-                //     },
-                //     {
-                //         data: 'telpon'
-                //     },
-                //     {
-                //         data: 'aksi',
-                //         searchable: false,
-                //         sortable: false
-                //     },
-                // ]
+                ajax: {
+                    url: '{{ route('pembelian.data') }}',
+                },
+                columns: [{
+                        data: 'DT_RowIndex',
+                        searchable: false,
+                        sortable: false
+                    },
+                    {
+                        data: 'tanggal'
+                    },
+                    {
+                        data: 'supplier'
+                    },
+                    {
+                        data: 'total_item'
+                    },
+                    {
+                        data: 'total_harga'
+                    },
+                    {
+                        data: 'diskon'
+                    },
+                    {
+                        data: 'bayar'
+                    },
+                    {
+                        data: 'aksi',
+                        searchable: false,
+                        sortable: false
+                    },
+                ]
             });
-
-            // $('#form').validator().on('submit', function(e) {
-            //     if (!e.preventDefault()) {
-            //         $.ajax({
-            //                 url: $('#form form').attr('action'),
-            //                 type: 'post',
-            //                 data: $('#form form').serialize(),
-            //             })
-            //             .done((response) => {
-            //                 $('#form').modal('hide');
-            //                 swal("Berhasil", "Data Berhasil", "success");
-            //                 table.ajax.reload();
-            //             })
-            //             .fail((errors) => {
-            //                 swal("Gagal", "Data tidak bisa ditambahkan", "error");
-            //                 return;
-            //             })
-            //     }
-            // });
+            $('.table-supplier').DataTable();
+            table1 = $('.table-detail').DataTable({
+                processing: true,
+                bSort: false,
+                dom: 'Brt',
+                columns: [{
+                        data: 'DT_RowIndex',
+                        searchable: false,
+                        sortable: false
+                    },
+                    {
+                        data: 'kode_produk'
+                    },
+                    {
+                        data: 'nama_produk'
+                    },
+                    {
+                        data: 'harga_beli'
+                    },
+                    {
+                        data: 'jumlah'
+                    },
+                    {
+                        data: 'subtotal'
+                    },
+                ]
+            })
         });
 
         function tambah() {

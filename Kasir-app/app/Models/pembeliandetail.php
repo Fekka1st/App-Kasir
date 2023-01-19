@@ -14,6 +14,6 @@ class pembeliandetail extends Model
 
     public function produk()
     {
-        return $this->hasMany(Produk::class, 'id_produk', 'id_produk');
+        return $this->hasOne(Produk::class, 'id_produk', 'id_produk');
     }
 }
