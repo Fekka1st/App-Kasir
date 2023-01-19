@@ -17,6 +17,9 @@
                     <div class="btn-group">
                         <button onclick="tambah('{{ route('pengeluaran.store') }}')" class="btn btn-success"><i
                                 class="fa fa-plus-circle"></i> Tambah</button>
+                        {{-- <button onclick="{{ route('pengeluaran.cetak') }}" class="btn btn-danger" target="_blank"><i
+                            class="fa fa-file-pdf"></i> Cetak Laporan</button> --}}
+                            <a href="{{ route('pengeluaran.cetak') }}" target="_blank">Cetak Laporan</a>
                     </div>
                 </div>
                 <div class="card-body table-responsive">
