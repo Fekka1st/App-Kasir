@@ -75,7 +75,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/pembelian_detail', PembelianDetailController::class)
         ->except('create', 'show', 'edit');
 
-    Route::get('')
 
 });
 

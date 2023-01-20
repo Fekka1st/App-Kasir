@@ -19,8 +19,8 @@
                                 class="fa fa-plus-circle"></i> Tambah</button>
                         <button onclick="cetakmember('{{ route('member.cetak_member') }}')" class="btn btn-danger"><i
                                 class="fa fa-id-card"></i> Cetak Member</button>
-                        <button onclick="memberexports('{{ route('export.member_export') }}')" class="btn btn-info"><i
-                                class="fa fa-id-card"></i> Export</button>
+                        <a href="{{ route('export.member_export')}}" class="btn btn-info"><i
+                                class="fa fa-excel"></i> Export</a>
                     </div>
                 </div>
                 <div class="box-body table-responsive">
@@ -79,7 +79,7 @@
                         data: 'alamat'
                     },
                     {
-                        data: 'telpon'
+                        data: 'telepon'
                     },
                     {
                         data: 'aksi',
