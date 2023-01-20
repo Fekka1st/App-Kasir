@@ -93,7 +93,7 @@
     <script src="{{ asset('AdminLTE/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
     <!-- ChartJS -->
     <script src="{{ asset('AdminLTE/plugins/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.css.min.js') }}"></script>
+
 
 
     <script src="{{ asset('AdminLTE/plugins/datatables/jquery.dataTables.min.js') }}"></script>
@@ -111,6 +111,7 @@
     <script src="{{ asset('AdminLTE/dist/js/pages/dashboard2.js') }}"></script>
     <script src="{{ asset('js/validator.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.js') }}"></script>
     @stack('script')
 </body>
 

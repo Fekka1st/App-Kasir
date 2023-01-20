@@ -18,7 +18,7 @@
                         <button onclick="tambah('{{ route('produk.store') }}')" class="btn btn-success"><i
                                 class="fa fa-plus-circle"></i> Tambah</button>
                         <button onclick="deleteselected('{{ route('produk.delete_selected') }}')" class="btn btn-danger"><i
-                                class="fas fa-trash"></i></i> Hapus Item</button>
+                                class="fas fa-trash"></i> Hapus Item</button>
                         <button onclick="cetak('{{ route('produk.cetak_barcode') }}')" class="btn btn-info"><i
                                 class="fas fa-print"></i> Cetak Barcode</button>
                         <button onclick="request('{{ route('permintaan.barang') }}')" class="btn btn-light"><i
