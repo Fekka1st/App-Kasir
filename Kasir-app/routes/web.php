@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/member/data', [MemberController::class, 'data'])->name('member.data');
     Route::resource('/member', MemberController::class);
     Route::post('/member/cetak-member', [MemberController::class, 'cetakmember'])->name('member.cetak_member');
+    // Route::get('member/exports', [MemberController::class, 'mwmberexport'])->name('member.exports'));
 
     Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
     Route::resource('/pengeluaran', PengeluaranController::class);
@@ -73,6 +74,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pembelian_detail/loadform/{diskon}/{total}', [PembelianDetailController::class, 'loadForm'])->name('pembelian_detail.load_form');
     Route::resource('/pembelian_detail', PembelianDetailController::class)
         ->except('create', 'show', 'edit');
+
+    Route::get('')
+
 });
 
 // Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');

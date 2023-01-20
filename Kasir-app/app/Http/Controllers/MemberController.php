@@ -6,6 +6,9 @@ use App\Models\Member;
 use Illuminate\Http\Request;
 
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BooksExport;
+
 
 class MemberController extends Controller
 {
@@ -137,4 +140,10 @@ class MemberController extends Controller
         $pdf->setPaper(array(0, 0, 566.93, 850.39), 'potrait');
         return $pdf->stream('member.pdf');
     }
+
+    public function export()
+    {
+        return Excel::download(new MemberExport, 'members.xlsx');
+    }
+
 }
