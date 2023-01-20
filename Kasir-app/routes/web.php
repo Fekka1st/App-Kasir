@@ -59,7 +59,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/member/data', [MemberController::class, 'data'])->name('member.data');
     Route::resource('/member', MemberController::class);
     Route::post('/member/cetak-member', [MemberController::class, 'cetakmember'])->name('member.cetak_member');
-    // Route::get('member/exports', [MemberController::class, 'mwmberexport'])->name('member.exports'));
+    Route::post('/member/export-member', [MemberController::class, 'memberexports'])->name('member.export');
+    Route::post('/member/import-member', [MemberController::class, 'memberimports'])->name('member.import');
 
     Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
     Route::resource('/pengeluaran', PengeluaranController::class);
@@ -75,6 +76,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/pembelian_detail', PembelianDetailController::class)
         ->except('create', 'show', 'edit');
 
+    // Route::get('')
 
 });
 

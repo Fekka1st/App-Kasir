@@ -13,4 +13,8 @@ class SendEmail extends Controller
         $produk = Produk::all();
         Mail::to('supplier@gmail.com')->send(new SendingEmail($produk));
     }
+    public function memberexports()
+    {
+        return Excel::download(new MemberExport, 'members.xlsx');
+    }
 }

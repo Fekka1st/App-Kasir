@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
-
 use PDF;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\BooksExport;
+use Excel;
+use App\Exports\MemberExport;
+use App\Imports\MemberImport;
 
 
 class MemberController extends Controller
@@ -141,9 +141,15 @@ class MemberController extends Controller
         return $pdf->stream('member.pdf');
     }
 
-    public function export()
+    public function memberexports()
     {
         return Excel::download(new MemberExport, 'members.xlsx');
+    }
+    public function memberimports(Request $request)
+    {
+        Excel::import(new MemberImport, $request->file('file'));
+
+        return response()->json('Data berhasil diimport', 200);
     }
 
 }
