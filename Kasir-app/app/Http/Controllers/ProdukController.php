@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\Produk;
+use App\Models\Member;
 use Illuminate\Http\Request;
 // use DataTables;
 use PDF;
@@ -58,8 +59,8 @@ class ProdukController extends Controller
             ->addColumn('aksi', function ($produk) {
                 return '
                 <div class="btn-group">
-                    <button type="button" onclick="edit(`' . route('produk.update', $produk->id_produk) . '`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-pencil"></i>edit</button>
-                    <button type="button" onclick="hapus(`' . route('produk.destroy', $produk->id_produk) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i>hapus</button>
+                    <button type="button" onclick="edit(`' . route('produk.update', $produk->id_produk) . '`)" class="btn btn-info "><i class="fas fa-pen"></i></button>
+                    <button type="button" onclick="hapus(`' . route('produk.destroy', $produk->id_produk) . '`)" class="btn btn-danger "><i class="fa fa-trash"></i></button>
                 </div>
                 ';
             })

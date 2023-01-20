@@ -14,7 +14,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header with-border">
-                    <button onclick="tambah('{{ route('supplier.store') }}')" class="btn btn-success">Tambah</button>
+                    <button onclick="tambah('{{ route('supplier.store') }}')" class="btn btn-success"><i
+                            class="fa fa-plus-circle"></i> </button>
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table table-striped table-bordered ">
@@ -23,7 +24,7 @@
                             <th>Nama Supplier</th>
                             <th>Alamat</th>
                             <th>Nomor Telepon</th>
-                            <th width="10$">Aksi</th>
+                            <th width="10$"><i class="fas fa-cogs"></i></th>
                         </thead>
                     </table>
                 </div>

@@ -22,16 +22,16 @@
                         <thead>
                             <th width="5%">No</th>
                             <th>Kategori</th>
-                            <th width="10$">Aksi</th>
+                            <th width="10$"><i class="fas fa-cogs"></i></th>
                         </thead>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-@endsection
 
-@includeIf('kategori.form')
+    @includeIf('kategori.form')
+@endsection
 
 @push('script')
     <script>

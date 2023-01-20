@@ -5,6 +5,9 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\PembelianDetailController;
 use App\Http\Controllers\SendEmail;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +23,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn () => redirect()->route('login'));
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
+Route::get('/', function () {
+    return view('LandingPage.master');
+});
+
+
+// Route::get('/login', fn () => redirect()->route('login'));
 
 Route::middleware([
     'auth:sanctum',
@@ -44,14 +56,33 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/produk/cetak-barcode', [ProdukController::class, 'cetakbarcode'])->name('produk.cetak_barcode');
     Route::resource('/produk', ProdukController::class);
 
+
+    Route::get('/member/data', [MemberController::class, 'data'])->name('member.data');
+    Route::resource('/member', MemberController::class);
+    Route::post('/member/cetak-member', [MemberController::class, 'cetakmember'])->name('member.cetak_member');
+
     Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
     Route::resource('/pengeluaran', PengeluaranController::class);
     Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');
+
 
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
     // Route::post('/laporan', [LaporanController::class, 'refresh'])->name('laporan.refresh');
     Route::get('/laporan/data/{awal}/{akhir}', [LaporanController::class, 'data'])->name('laporan.data');
     Route::get('/laporan/pdf/{awal}/{akhir}', [LaporanController::class, 'exportPDF'])->name('laporan.export_pdf');
+
+    Route::get('/pembelian/data', [PembelianController::class, 'data'])->name('pembelian.data');
+    Route::get('/pembelian/{id}/create', [PembelianController::class, 'create'])->name('pembelian.create');
+    Route::resource('/pembelian', PembelianController::class)
+        ->except('create');
+
+    Route::get('/pembelian_detail/{id}/data', [PembelianDetailController::class, 'data'])->name('pembelian_detail.data');
+    Route::get('/pembelian_detail/loadform/{diskon}/{total}', [PembelianDetailController::class, 'loadForm'])->name('pembelian_detail.load_form');
+    Route::resource('/pembelian_detail', PembelianDetailController::class)
+        ->except('create', 'show', 'edit');
+
+    Route::get('/print_report', [PengeluaranController::class, 'report'])->name('pengeluaran.cetak');
+
 });
 
 // Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');

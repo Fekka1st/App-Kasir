@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    Daftar Pengeluaran
+    Daftar Produk
 @endsection
 
 @section('rute')
     @parent
-    <li class="breadcrumb-item active">Daftar Pengeluaran</li>
+    <li class="breadcrumb-item active">Daftar Pembelian</li>
 @endsection
 
 @section('content')
@@ -15,20 +15,25 @@
             <div class="card">
                 <div class="card-header with-border">
                     <div class="btn-group">
-                        <button onclick="tambah('{{ route('pengeluaran.store') }}')" class="btn btn-success"><i
-                                class="fa fa-plus-circle"></i> Tambah</button>
-                            <a href="{{ route('pengeluaran.cetak') }}" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf"></i> Cetak Laporan</a>
+                        <button onclick="tambah()" class="btn btn-success"><i class="fa fa-plus-circle"></i> Transaksi</button>
+                        @empty(!session('id_pembelian'))
+                            <a href="{{ route('pembelian_detail.index') }}" class="btn btn-info"><i class="fas fa-star"></i>
+                                Transaksi Aktif</a>
+                        @endempty
                     </div>
                 </div>
                 <div class="card-body table-responsive">
                     <form action="" method="post" class="form-produk">
                         @csrf
-                        <table class="table table-stiped table-bordered">
+                        <table class="table table-stiped table-bordered table-pembelian">
                             <thead>
                                 <th width="5%">No</th>
                                 <th>Tanggal</th>
-                                <th>Deskripsi</th>
-                                <th>Nominal</th>
+                                <th>Supplier</th>
+                                <th>Total Item</th>
+                                <th>Total Harga</th>
+                                <th>Diskon</th>
+                                <th>Total Bayar</th>
                                 <th width="15%"><i class="fas fa-cogs"></i></i></th>
                             </thead>
                         </table>
@@ -38,20 +43,22 @@
         </div>
     </div>
 
-    @includeIf('pengeluaran.form')
+    @includeIf('pembelian.supplier')
+    @includeIf('pembelian.detail')
 @endsection
+
 
 @push('script')
     <script>
-        let table;
+        let table, table1;
         $(function() {
-            table = $('.table').DataTable({
+            table = $('.table-pembelian').DataTable({
                 responsive: true,
                 processing: true,
                 serverSide: true,
                 autoWidth: false,
                 ajax: {
-                    url: '{{ route('pengeluaran.data') }}',
+                    url: '{{ route('pembelian.data') }}',
                 },
                 columns: [{
                         data: 'DT_RowIndex',
@@ -59,13 +66,22 @@
                         sortable: false
                     },
                     {
-                        data: 'created_at'
+                        data: 'tanggal'
                     },
                     {
-                        data: 'deskripsi'
+                        data: 'supplier'
                     },
                     {
-                        data: 'nominal'
+                        data: 'total_item'
+                    },
+                    {
+                        data: 'total_harga'
+                    },
+                    {
+                        data: 'diskon'
+                    },
+                    {
+                        data: 'bayar'
                     },
                     {
                         data: 'aksi',
@@ -74,54 +90,47 @@
                     },
                 ]
             });
-            $('#form').validator().on('submit', function(e) {
-                if (!e.preventDefault()) {
-                    $.post($('#form form').attr('action'), $('#form form').serialize())
-                        .done((response) => {
-                            $('#form').modal('hide');
-                            swal("Berhasil", "Data Berhasil", "success");
-                            table.ajax.reload();
-                        })
-                        .fail((errors) => {
-                            swal("Gagal", "Data tidak bisa ditambahkan", "error");
-                            return;
-                        });
-                }
-            });
+            $('.table-supplier').DataTable();
+            table1 = $('.table-detail').DataTable({
+                processing: true,
+                bSort: false,
+                dom: 'Brt',
+                columns: [{
+                        data: 'DT_RowIndex',
+                        searchable: false,
+                        sortable: false
+                    },
+                    {
+                        data: 'kode_produk'
+                    },
+                    {
+                        data: 'nama_produk'
+                    },
+                    {
+                        data: 'harga_beli'
+                    },
+                    {
+                        data: 'jumlah'
+                    },
+                    {
+                        data: 'subtotal'
+                    },
+                ]
+            })
         });
 
-        function tambah(url) {
-            $('#form').modal('show');
-            $('#formLabel').text('Tambah pengeluaran');
-            $('#form form')[0].reset();
-            $('#form form').attr('action', url);
-            $('#form [name=_method]').val('post');
-            $('#form [name=deskripsi]').focus();
 
+        function tambah() {
+            $('#supplier').modal('show');
         }
 
-        function edit(url) {
-            $('#form').modal('show');
-            $('#formLabel').text('Edit Produk');
-            $('#form form')[0].reset();
-            $('#form form').attr('action', url);
-            $('#form [name=_method]').val('put');
-            $('#form [name=deskripsi]').focus();
-
-            $.get(url)
-                .done((response) => {
-                    $('#form [name=deskripsi]').val(response.deskripsi);
-                    $('#form [name=nominal]').val(response.nominal);
-
-                })
-                .fail((errors) => {
-                    swal("Gagal", "Data tidak bisa ditambahkan", "error");
-                    return;
-                });
+        function showDetail(url) {
+            $('#detail').modal('show');
+            table1.ajax.url(url);
+            table1.ajax.reload();
         }
 
         function hapus(url) {
-
             swal({
                     title: "Apakah Kamu Yakin",
                     text: "Data terhapus tidak dapat kembali lagi",
@@ -143,7 +152,7 @@
                                 swal("Berhasil", "Dihapus", "success");
                             })
                             .fail((errors) => {
-
+                                swal("Gagal", "Data tidak bisa ditambahkan", "error");
                                 return;
                             })
                     } else {
