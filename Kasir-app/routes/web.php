@@ -4,6 +4,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PembelianDetailController;
@@ -64,6 +65,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/pengeluaran', PengeluaranController::class);
     Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');
 
+
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    // Route::post('/laporan', [LaporanController::class, 'refresh'])->name('laporan.refresh');
+    Route::get('/laporan/data/{awal}/{akhir}', [LaporanController::class, 'data'])->name('laporan.data');
+    Route::get('/laporan/pdf/{awal}/{akhir}', [LaporanController::class, 'exportPDF'])->name('laporan.export_pdf');
+
     Route::get('/pembelian/data', [PembelianController::class, 'data'])->name('pembelian.data');
     Route::get('/pembelian/{id}/create', [PembelianController::class, 'create'])->name('pembelian.create');
     Route::resource('/pembelian', PembelianController::class)
@@ -75,6 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
         ->except('create', 'show', 'edit');
 
     Route::get('/print_report', [PengeluaranController::class, 'report'])->name('pengeluaran.cetak');
+
 });
 
 // Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');
