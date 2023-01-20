@@ -8,7 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Penjualan extends Model
 {
     use HasFactory;
-    protected $table = 'Penjualans';
-    protected $primaryKey = 'id_Penjualan';
+
+    protected $table = 'penjualans';
+    protected $primaryKey = 'id_penjualan';
     protected $guarded = [];
+
+    public function member()
+    {
+        return $this->hasOne(Member::class, 'id_member', 'id_member');
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'id_user');
+    }
 }
