@@ -43,8 +43,35 @@
         </div>
     </div>
 
+
+    {{-- detail modal --}}
+    <div class="modal fade" id="supplier2" tabindex="-1" aria-labelledby="formLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <form action="" method="post" class="form-horizontal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="formLabel">Detail Pembelian</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped table-bordered table-detail">
+                            <thead>
+                                <th width="5%">No</th>
+                                <th>Kode</th>
+                                <th>Nama</th>
+                                <th>Harga</th>
+                                <th>Jumlah</th>
+                                <th>Subtotal</th>
+                            </thead>
+                        </table>
+                    </div>
+            </form>
+        </div>
+    </div>
+
     @includeIf('pembelian.supplier')
-    @includeIf('pembelian.detail')
 @endsection
 
 
@@ -91,10 +118,10 @@
                 ]
             });
             $('.table-supplier').DataTable();
+
             table1 = $('.table-detail').DataTable({
                 processing: true,
                 bSort: false,
-                dom: 'Brt',
                 columns: [{
                         data: 'DT_RowIndex',
                         searchable: false,
@@ -116,19 +143,21 @@
                         data: 'subtotal'
                     },
                 ]
-            })
+            });
         });
 
+        function showDetail(url) {
+            $('#supplier2').modal('show');
+            table1.ajax.url(url);
+            table1.ajax.reload;
+        }
 
         function tambah() {
             $('#supplier').modal('show');
+
         }
 
-        function showDetail(url) {
-            $('#detail').modal('show');
-            table1.ajax.url(url);
-            table1.ajax.reload();
-        }
+
 
         function hapus(url) {
             swal({

@@ -110,7 +110,7 @@
                                         <label for="diskon" class="col-lg-2 control-label">Diskon</label>
                                         <div class="col-lg-8">
                                             <input type="number" name="diskon" id="diskon" class="form-control"
-                                                value="0">
+                                                value="{{ $diskon }}">
                                         </div>
                                     </div>
                                     <div class="form-group row">

@@ -7,6 +7,8 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PembelianDetailController;
+use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\PenjualanDetailController;
 use App\Http\Controllers\SendEmail;
 use Illuminate\Support\Facades\Route;
 
@@ -73,6 +75,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pembelian_detail/loadform/{diskon}/{total}', [PembelianDetailController::class, 'loadForm'])->name('pembelian_detail.load_form');
     Route::resource('/pembelian_detail', PembelianDetailController::class)
         ->except('create', 'show', 'edit');
+
+    Route::get('/transaksi/baru', [PenjualanController::class, 'create'])->name('transaksi.baru');
+    Route::resource('/transaksi', PenjualanDetailController::class)
+        ->except('show');
 });
 
 // Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');
