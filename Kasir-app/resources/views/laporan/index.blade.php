@@ -27,7 +27,7 @@
 
                 </div>
                 <div class="card-body table-responsive">
-                    <table class="table table-stiped table-bordered">
+                    <table class="table table-stiped table-bordered ">
                         <thead>
                             <th width="5%">No</th>
                             <th>Tanggal</th>
