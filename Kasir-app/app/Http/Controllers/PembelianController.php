@@ -46,8 +46,8 @@ class PembelianController extends Controller
             ->addColumn('aksi', function ($pembelian) {
                 return '
                 <div class="btn-group">
-                <button type="button" onclick="showDetail(`' . route('pembelian.show', $pembelian->id_pembelian) . '`)"class="btn btn-info "><i class="fa fa-eye"></i></button>
-                    <button type="button" onclick="hapus(`' . route('pembelian.destroy',  $pembelian->id_pembelian) . '`)" class="btn btn-danger "><i class="fa fa-trash"></i></button>
+                <button type="button" onclick="showDetail(`' . route('pembelian.show',  $pembelian->id_pembelian) . '`)"class="btn btn-info "><i class="fa fa-eye"></i></button>
+                <button type="button" onclick="hapus(`' . route('pembelian.destroy',  $pembelian->id_pembelian) . '`)" class="btn btn-danger "><i class="fa fa-trash"></i></button>
                     </div>
                 ';
             })
@@ -93,7 +93,6 @@ class PembelianController extends Controller
     public function show($id)
     {
         $detail = PembelianDetail::with('produk')->where('id_pembelian', $id)->get();
-        return $detail;
         return datatables()
             ->of($detail)
             ->addIndexColumn()
