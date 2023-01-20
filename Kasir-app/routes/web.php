@@ -8,6 +8,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PembelianDetailController;
 use App\Http\Controllers\SendEmail;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -75,6 +76,9 @@ Route::group(['middleware' => 'auth'], function () {
         ->except('create', 'show', 'edit');
 
     Route::get('/print_report', [PengeluaranController::class, 'report'])->name('pengeluaran.cetak');
+
+    Route::get('/user/data', [UserController::class, 'data'])->name('user.data');
+    Route::resource('/user', UserController::class);
 });
 
 // Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');
