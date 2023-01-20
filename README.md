@@ -8,7 +8,7 @@ _Berikut Gambar dari aplikasi yang kami buat_
 ## ScreenShoot
 
 <h3>Logo</h3>
-<p align="center"><a href="#" target="_blank"><img src="./img/logo.png" width="1000"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="./img/Logo.png" width="1000"></a></p>
 
 <h3>Tampilan Dashboard</h3>
 <p align="center"><a href="#" target="_blank"><img src="./img/Dashboard.png" width="1000"></a></p>
@@ -31,11 +31,12 @@ _Berikut Gambar dari aplikasi yang kami buat_
 - [x] CRUD Supplier
 - [x] CRUD Pengeluaran
 - [x] CRUD Pembelian Produk ( sedikit bug tidak bisa menampilkan detail dari pembelian produk )
-- [ ] CRUD Penjualan (Penjualan Produk)
-- [ ] Laporan
-- [ ] Manajemen Akun (2 role : Admin , Kasir)
+- [ ] CRUD Penjualan (Penjualan Produk) on Progress
+- [ ] Laporan Ada bug
+- [x] Manajemen Akun (2 role : Admin , Kasir)
 - [ ] Pengaturan
-- [ ] MailTrap untuk mengirimkan notif ke Email
+- [ ] MailTrap untuk mengirimkan notif ke Email Ada Bug
+- [ ] Import Export Excel File on Progress
 
 ## Fitur :
 
@@ -72,8 +73,6 @@ _Berikut Gambar dari aplikasi yang kami buat_
 
 11. Enjoy!
 
-jika terjadi error kontak saya
-
 ## Contact
 
 - [GitHub](https://www.github.com/Fekka1st/)
@@ -81,3 +80,4 @@ jika terjadi error kontak saya
 ## Catatan
 
 - Aplikasi ini masih banyak mengalami bug jadi mohon maaf bila belum selesai 100%
+- Jika ingin mengembangkan aplikasi ini dipersilahkan
