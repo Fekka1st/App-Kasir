@@ -64,6 +64,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
     Route::resource('/pengeluaran', PengeluaranController::class);
+    // mailer
     Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');
 
     Route::get('/pembelian/data', [PembelianController::class, 'data'])->name('pembelian.data');
