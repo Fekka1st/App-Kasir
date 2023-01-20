@@ -18,7 +18,7 @@ class UserController extends Controller
     public function data()
     {
         $user = User::isNotAdmin()->orderBy('id', 'desc')->get();
-        return $user;
+
         return datatables()
             ->of($user)
             ->addIndexColumn()
@@ -36,39 +36,42 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = Pengeluaran::find($id);
+        $user = User::find($id);
 
         return response()->json($user);
     }
 
     public function store(Request $request)
     {
-        $user = Pengeluaran::create($request->all());
-
-        return response()->json('Data berhasil disimpan', 200);
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->level = 2;
+        $user->foto = '/img/fotouser.jpg';
+        $user->save();
+        return response()->json('Data Berhasil', 200);
     }
 
 
 
     public function update(Request $request, $id)
     {
-        $user = Pengeluaran::find($id)->update($request->all());
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->level = 2;
+        $user->foto = '/img/fotouser.jpg';
+        $user->save();
 
         return response()->json('Data berhasil disimpan', 200);
     }
 
     public function destroy($id)
     {
-        $user = Pengeluaran::find($id)->delete();
+        $user = User::find($id)->delete();
 
         return response(null, 204);
-    }
-
-    public function report()
-    {
-        $user = Pengeluaran::all();
-
-        $pdf = PDF::loadview('pengeluaran.print_preview', ['pengeluaran' => $user]);
-        return $pdf->download('data_pengeluaran.pdf');
     }
 }

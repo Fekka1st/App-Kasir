@@ -92,7 +92,7 @@
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('post');
             $('#form [name=name]').focus();
-
+            $('#password,#password_confirmation').attr('required', true);
         }
 
         function edit(url) {
@@ -102,7 +102,7 @@
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('put');
             $('#form [name=name]').focus();
-
+            $('#password,#password_confirmation').attr('required', false);
             $.get(url)
                 .done((response) => {
                     $('#form [name=name]').val(response.name);
