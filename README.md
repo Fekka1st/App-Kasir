@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="https://staticg.sportskeeda.com/editor/2021/09/9eaad-16306015205656-800.jpg" width="400"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="./img/home.png" width="400"></a></p>
 
 <h1 align="center">Aplikasi Kasir</h1>
 
@@ -7,13 +7,44 @@ _Berikut Gambar dari aplikasi yang kami buat_
 
 ## ScreenShoot
 
+<h3>Logo</h3>
+<p align="center"><a href="#" target="_blank"><img src="./img/logo.png" width="1000"></a></p>
+
+<h3>Tampilan Dashboard</h3>
+<p align="center"><a href="#" target="_blank"><img src="./img/Dashboard.png" width="1000"></a></p>
+
+<h3>Tampilan Produk</h3>
+<p align="center"><a href="#" target="_blank"><img src="./img/produk.png" width="1000"></a></p>
+
+<h3>Tampilan Landingpage</h3>
+<p align="center"><a href="#" target="_blank"><img src="./img/landingpage.png" width="1000"></a></p>
 
 ## Roadmap
 
-- [ ] Dashboard
+- [x] Dashboard
+- [x] Landing Page
+- [x] Authentication
+- [x] CRUD Kategori
+- [x] CRUD Produk
+- [x] Multipel Selected For Delete Item
+- [x] CRUD Member + Cetak Kartu Member PDF
+- [x] CRUD Supplier
+- [x] CRUD Pengeluaran
+- [x] CRUD Pembelian Produk ( sedikit bug tidak bisa menampilkan detail dari pembelian produk )
+- [ ] CRUD Penjualan (Penjualan Produk)
+- [ ] Laporan
+- [ ] Manajemen Akun (2 role : Admin , Kasir)
+- [ ] Pengaturan
+- [ ] MailTrap untuk mengirimkan notif ke Email
 
 ## Fitur :
 
+- Bisa Mencetak Kartu Member
+- Fitur Diskon setiap pembelian produk untuk dijual
+- Untuk Member akan Mendapatkan potongan diskon bisa di set di pengaturan
+- Ada 2 role untuk saat ini
+- Tampilan Minimalis
+- Notofikasi Sweetalert
 
 ## Requirements
 
@@ -32,12 +63,14 @@ _Berikut Gambar dari aplikasi yang kami buat_
 5.  Buat Database lalu update .env bisa juga cp .env.example .env
 6.  Run `php artisan key:generate`
 7.  Run `php artisan migrate`
-8.  Run `php artisan db:seed --class=Users`
+8.  Run `php artisan db:seed `
 9.  Run `php artisan serve`
-10.  Login dengan user dibawah
-    -   Email: `admin@gmail.com`
-    -   Password: `12345`
-11.  Enjoy!
+10. Login dengan user dibawah
+
+    - Email: `admin@gmail.com`
+    - Password: `12345`
+
+11. Enjoy!
 
 jika terjadi error kontak saya
 
@@ -45,6 +78,6 @@ jika terjadi error kontak saya
 
 - [GitHub](https://www.github.com/Fekka1st/)
 
-<!-- ## Donate
+## Catatan
 
-Jangan lupa berikan bintang jika kalian ingin saya lanjutkan project ini. -->
+- Aplikasi ini masih banyak mengalami bug jadi mohon maaf bila belum selesai 100%
