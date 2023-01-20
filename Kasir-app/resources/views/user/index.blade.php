@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    Daftar Pengeluaran
+    Daftar Akun
 @endsection
 
 @section('rute')
     @parent
-    <li class="breadcrumb-item active">Daftar Pengeluaran</li>
+    <li class="breadcrumb-item active">Daftar Akun</li>
 @endsection
 
 @section('content')
@@ -15,20 +15,19 @@
             <div class="card">
                 <div class="card-header with-border">
                     <div class="btn-group">
-                        <button onclick="tambah('{{ route('pengeluaran.store') }}')" class="btn btn-success"><i
+                        <button onclick="tambah('{{ route('user.store') }}')" class="btn btn-success"><i
                                 class="fa fa-plus-circle"></i> Tambah</button>
-                            <a href="{{ route('pengeluaran.cetak') }}" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf"></i> Cetak Laporan</a>
+
                     </div>
                 </div>
                 <div class="card-body table-responsive">
                     <form action="" method="post" class="form-produk">
                         @csrf
-                        <table class="table table-stiped table-bordered">
+                        <table class="table table-stiped table-bordered table-user">
                             <thead>
                                 <th width="5%">No</th>
-                                <th>Tanggal</th>
-                                <th>Deskripsi</th>
-                                <th>Nominal</th>
+                                <th>Nama</th>
+                                <th>Email</th>
                                 <th width="15%"><i class="fas fa-cogs"></i></i></th>
                             </thead>
                         </table>
@@ -38,20 +37,19 @@
         </div>
     </div>
 
-    @includeIf('pengeluaran.form')
+    @includeIf('user.form')
 @endsection
 
 @push('script')
     <script>
         let table;
         $(function() {
-            table = $('.table').DataTable({
+            table = $('.table-user').DataTable({
                 responsive: true,
                 processing: true,
                 serverSide: true,
-                autoWidth: false,
                 ajax: {
-                    url: '{{ route('pengeluaran.data') }}',
+                    url: '{{ route('user.data') }}',
                 },
                 columns: [{
                         data: 'DT_RowIndex',
@@ -59,13 +57,10 @@
                         sortable: false
                     },
                     {
-                        data: 'created_at'
+                        data: 'name'
                     },
                     {
-                        data: 'deskripsi'
-                    },
-                    {
-                        data: 'nominal'
+                        data: 'email'
                     },
                     {
                         data: 'aksi',
@@ -92,26 +87,26 @@
 
         function tambah(url) {
             $('#form').modal('show');
-            $('#formLabel').text('Tambah pengeluaran');
+            $('#formLabel').text('Tambah User');
             $('#form form')[0].reset();
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('post');
-            $('#form [name=deskripsi]').focus();
-
+            $('#form [name=name]').focus();
+            $('#password,#password_confirmation').attr('required', true);
         }
 
         function edit(url) {
             $('#form').modal('show');
-            $('#formLabel').text('Edit Produk');
+            $('#formLabel').text('Edit User');
             $('#form form')[0].reset();
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('put');
-            $('#form [name=deskripsi]').focus();
-
+            $('#form [name=name]').focus();
+            $('#password,#password_confirmation').attr('required', false);
             $.get(url)
                 .done((response) => {
-                    $('#form [name=deskripsi]').val(response.deskripsi);
-                    $('#form [name=nominal]').val(response.nominal);
+                    $('#form [name=name]').val(response.name);
+                    $('#form [name=email]').val(response.email);
 
                 })
                 .fail((errors) => {
