@@ -1,50 +1,55 @@
 @extends('layouts.master')
 
 @section('title')
-    Supplier
+    Daftar Akun
 @endsection
 
 @section('rute')
     @parent
-    <li class="breadcrumb-item active">Supplier</li>
+    <li class="breadcrumb-item active">Daftar Akun</li>
 @endsection
 
 @section('content')
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-lg-12">
             <div class="card">
                 <div class="card-header with-border">
-                    <button onclick="tambah('{{ route('supplier.store') }}')" class="btn btn-success"><i
-                            class="fa fa-plus-circle"></i> Tambah</button>
+                    <div class="btn-group">
+                        <button onclick="tambah('{{ route('user.store') }}')" class="btn btn-success"><i
+                                class="fa fa-plus-circle"></i> Tambah</button>
+
+                    </div>
                 </div>
                 <div class="card-body table-responsive">
-                    <table class="table table-striped table-bordered ">
-                        <thead>
-                            <th width="5%">No</th>
-                            <th>Nama Supplier</th>
-                            <th>Alamat</th>
-                            <th>Nomor Telepon</th>
-                            <th width="10$"><i class="fas fa-cogs"></i></th>
-                        </thead>
-                    </table>
+                    <form action="" method="post" class="form-produk">
+                        @csrf
+                        <table class="table table-stiped table-bordered table-user">
+                            <thead>
+                                <th width="5%">No</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th width="15%"><i class="fas fa-cogs"></i></i></th>
+                            </thead>
+                        </table>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-
-    @includeIf('supplier.form')
+    @includeIf('user.form')
 @endsection
 
 @push('script')
     <script>
         let table;
         $(function() {
-            table = $('.table').DataTable({
+            table = $('.table-user').DataTable({
+                responsive: true,
                 processing: true,
-                autoWidth: false,
+                serverSide: true,
                 ajax: {
-                    url: '{{ route('supplier.data') }}',
+                    url: '{{ route('user.data') }}',
                 },
                 columns: [{
                         data: 'DT_RowIndex',
@@ -52,13 +57,10 @@
                         sortable: false
                     },
                     {
-                        data: 'nama'
+                        data: 'name'
                     },
                     {
-                        data: 'alamat'
-                    },
-                    {
-                        data: 'telpon'
+                        data: 'email'
                     },
                     {
                         data: 'aksi',
@@ -67,14 +69,9 @@
                     },
                 ]
             });
-
             $('#form').validator().on('submit', function(e) {
                 if (!e.preventDefault()) {
-                    $.ajax({
-                            url: $('#form form').attr('action'),
-                            type: 'post',
-                            data: $('#form form').serialize(),
-                        })
+                    $.post($('#form form').attr('action'), $('#form form').serialize())
                         .done((response) => {
                             $('#form').modal('hide');
                             swal("Berhasil", "Data Berhasil", "success");
@@ -83,40 +80,43 @@
                         .fail((errors) => {
                             swal("Gagal", "Data tidak bisa ditambahkan", "error");
                             return;
-                        })
+                        });
                 }
             });
         });
 
         function tambah(url) {
             $('#form').modal('show');
-            $('#formLabel').text('Tambah Supplier');
+            $('#formLabel').text('Tambah User');
             $('#form form')[0].reset();
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('post');
-            $('#form [name=nama]').focus();
+            $('#form [name=name]').focus();
+            $('#password,#password_confirmation').attr('required', true);
         }
 
-        function editForm(url) {
+        function edit(url) {
             $('#form').modal('show');
-            $('#formLabel').text('Edit Supplier');
+            $('#formLabel').text('Edit User');
             $('#form form')[0].reset();
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('put');
-            $('#form [name=nama]').focus();
+            $('#form [name=name]').focus();
+            $('#password,#password_confirmation').attr('required', false);
             $.get(url)
                 .done((response) => {
-                    $('#form [name=nama]').val(response.nama);
-                    $('#form [name=telpon]').val(response.telpon);
-                    $('#form [name=alamat]').val(response.alamat);
+                    $('#form [name=name]').val(response.name);
+                    $('#form [name=email]').val(response.email);
+
                 })
                 .fail((errors) => {
-                    alert('Tidak dapat menampilkan data');
+                    swal("Gagal", "Data tidak bisa ditambahkan", "error");
                     return;
                 });
         }
 
-        function deleteData(url) {
+        function hapus(url) {
+
             swal({
                     title: "Apakah Kamu Yakin",
                     text: "Data terhapus tidak dapat kembali lagi",
@@ -138,7 +138,7 @@
                                 swal("Berhasil", "Dihapus", "success");
                             })
                             .fail((errors) => {
-                                swal("Gagal", "Data tidak bisa ditambahkan", "error");
+
                                 return;
                             })
                     } else {
