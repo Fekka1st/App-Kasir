@@ -15,4 +15,8 @@ class SendEmail extends Controller
 
         return redirect()->back();
     }
+    public function memberexports()
+    {
+        return Excel::download(new MemberExport, 'members.xlsx');
+    }
 }
