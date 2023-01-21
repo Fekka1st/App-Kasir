@@ -18,10 +18,10 @@
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
-                    <div class="form-group row" id="input-telepon">
+                    <div class="form-group row" id="input-telpon">
                         <label for="telpon" class="col-lg-2 col-lg-offset-1 control-label">Telpon</label>
                         <div class="col-lg-6">
-                            <input type="text" name="telepon" id="telpon" class="form-control" required>
+                            <input type="text" name="telpon" id="telpon" class="form-control" required>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>

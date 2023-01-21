@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    route::group(['middleware' => '1'], function () {
+    route::group(['middleware' => 'level:1'], function () {
         Route::get('/kategori/data', [KategoriController::class, 'data'])->name('kategori.data');
         Route::resource('/kategori', KategoriController::class); // ini bukan array guys hati hati yah
 
@@ -87,8 +87,8 @@ Route::group(['middleware' => 'auth'], function () {
             ->except('create', 'show', 'edit');
 
 
-      Route::get('/pengeluaran/export', [PengeluaranController::class, 'export'])->name('pengeluaran.export');
-      
+        Route::get('/pengeluaran/export', [PengeluaranController::class, 'export'])->name('pengeluaran.export');
+
         Route::get('/transaksi/baru', [PenjualanController::class, 'create'])->name('transaksi.baru');
         Route::post('/transaksi/simpan', [PenjualanController::class, 'store'])->name('transaksi.simpan');
         Route::get('/transaksi/selesai', [PenjualanController::class, 'selesai'])->name('transaksi.selesai');
@@ -112,9 +112,13 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/user/data', [UserController::class, 'data'])->name('user.data');
         Route::resource('/user', UserController::class);
+        Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+        // Route::post('/laporan', [LaporanController::class, 'refresh'])->name('laporan.refresh');
+        Route::get('/laporan/data/{awal}/{akhir}', [LaporanController::class, 'data'])->name('laporan.data');
+        Route::get('/laporan/pdf/{awal}/{akhir}', [LaporanController::class, 'exportPDF'])->name('laporan.export_pdf');
     });
 
-    route::group(['middleware' => '1', '2'], function () {
+    route::group(['middleware' => 'level:1', 'level:2'], function () {
         Route::get('/transaksi/baru', [PenjualanController::class, 'create'])->name('transaksi.baru');
         Route::post('/transaksi/simpan', [PenjualanController::class, 'store'])->name('transaksi.simpan');
         Route::get('/transaksi/selesai', [PenjualanController::class, 'selesai'])->name('transaksi.selesai');
@@ -134,7 +138,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/penjualan/{id}', [PenjualanController::class, 'show'])->name('penjualan.show');
         Route::delete('/penjualan/{id}', [PenjualanController::class, 'destroy'])->name('penjualan.destroy');
     });
-
 });
 
 // Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');

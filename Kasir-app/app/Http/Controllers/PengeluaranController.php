@@ -77,14 +77,16 @@ class PengeluaranController extends Controller
     // public function export(){
     //     return Excel::download(new LaporanPengeluaranExport, 'Laporan Pengeluaran.xlsx');
     // }
-    public function export(){
+    public function export()
+    {
         return Excel::download(new LaporanPengeluaranExport, 'LaporanPengeluaran.xlsx');
+    }
 
-    public function report(){
+    public function report()
+    {
         $pengeluaran = Pengeluaran::all();
 
-        $pdf = PDF::loadview('pengeluaran.print_preview', ['pengeluaran'=>$pengeluaran]);
+        $pdf = PDF::loadview('pengeluaran.print_preview', ['pengeluaran' => $pengeluaran]);
         return $pdf->download('data_pengeluaran.pdf');
-
     }
 }

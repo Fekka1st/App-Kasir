@@ -22,10 +22,10 @@
                         <button onclick="exportmember('{{ route('member.export') }}')" class="btn btn-info"><i
                                 class="fa fa-id-card"></i> Export Member</button>
                         <button onclick="importmember('{{ route('member.import') }}')" class="btn btn-primary"><i
-                                    class="fa fa-id-card"></i> Import Member</button>
+                                class="fa fa-id-card"></i> Import Member</button>
                     </div>
-                    <a href="files/members.xlsx" class="btn btn-secondary"><i
-                        class="fa fa-id-card"></i> Template Import Member</a>
+                    <a href="files/members.xlsx" class="btn btn-secondary"><i class="fa fa-id-card"></i> Template Import
+                        Member</a>
                 </div>
                 <div class="box-body table-responsive">
                     <form action=" " method="post" class="form-member">
@@ -83,7 +83,7 @@
                         data: 'alamat'
                     },
                     {
-                        data: 'telepon'
+                        data: 'telpon'
                     },
                     {
                         data: 'aksi',
@@ -95,19 +95,19 @@
             });
 
             $('#form').validator().on('submit', function(e) {
-                                // Get form
-                        var form = $('#formMember')[0];
+                // Get form
+                var form = $('#formMember')[0];
 
-                 // Create an FormData object 
-                  var data = new FormData(form);
+                // Create an FormData object 
+                var data = new FormData(form);
                 if (!e.preventDefault()) {
                     $.ajax({
                             url: $('#form form').attr('action'),
                             type: 'post',
                             data: data,
-            processData: false,
-            contentType: false,
-            cache: false,
+                            processData: false,
+                            contentType: false,
+                            cache: false,
                         })
                         .done((response) => {
                             $('#form').modal('hide');
@@ -146,7 +146,7 @@
             $.get(url)
                 .done((response) => {
                     $('#form [name=nama]').val(response.nama);
-                    $('#form [name=telepon]').val(response.telepon);
+                    $('#form [name=telpon]').val(response.telpon);
                     $('#form [name=alamat]').val(response.alamat);
                 })
                 .fail((errors) => {
@@ -201,20 +201,22 @@
                     .submit();
             }
         }
+
         function exportmember(url) {
-                $('.form-member')
-                    .attr('target', '._blank')
-                    .attr('action', url)
-                    .submit();
-            
+            $('.form-member')
+                .attr('target', '._blank')
+                .attr('action', url)
+                .submit();
+
         }
+
         function importmember(url) {
             $('#import-member').empty();
             const y = document.getElementById('import-member');
             $('#form').modal('show');
             $('#formLabel').text('Import Member');
             $('#input-nama').remove();
-            $('#input-telepon').remove();
+            $('#input-telpon').remove();
             $('#input-alamat').remove();
             $('#form form').attr('action', url);
             $('#form [name=_method]').val('post');
