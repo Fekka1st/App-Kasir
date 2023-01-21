@@ -31,12 +31,12 @@ _Berikut Gambar dari aplikasi yang kami buat_
 - [x] CRUD Supplier
 - [x] CRUD Pengeluaran
 - [x] CRUD Pembelian Produk ( sedikit bug tidak bisa menampilkan detail dari pembelian produk )
-- [ ] CRUD Penjualan (Penjualan Produk) on Progress
+- [x] CRUD Penjualan (Penjualan Produk)
 - [ ] Laporan Ada bug
 - [x] Manajemen Akun (2 role : Admin , Kasir)
 - [ ] Pengaturan
-- [ ] MailTrap untuk mengirimkan notif ke Email Ada Bug
-- [ ] Import Export Excel File on Progress
+- [x] MailTrap untuk mengirimkan notif ke Email Ada Bug
+- [x] Import Export Excel File
 
 ## Fitur :
 
