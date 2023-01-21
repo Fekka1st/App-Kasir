@@ -34,9 +34,9 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3>{{ $produk }}<sup style="font-size: 20px"></sup></h3>
 
-                        <p>{{ $produk }}</p>
+                        <p>Produk</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-star"></i>

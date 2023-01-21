@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Daftar Produk
+    Daftar Pembelian
 @endsection
 
 @section('rute')
@@ -43,36 +43,7 @@
         </div>
     </div>
 
-
-
-    {{-- detail modal
-    <div class="modal fade" id="supplier2" tabindex="-1" aria-labelledby="formLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <form action="" method="post" class="form-horizontal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="formLabel">Detail Pembelian</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table table-striped table-bordered table-detail">
-                            <thead>
-                                <th width="5%">No</th>
-                                <th>Kode</th>
-                                <th>Nama</th>
-                                <th>Harga</th>
-                                <th>Jumlah</th>
-                                <th>Subtotal</th>
-                            </thead>
-                        </table>
-                    </div>
-            </form>
-        </div>
-    </div> --}}
-
-
+    @includeIf('pembelian.supplier');
 @endsection
 
 
@@ -157,7 +128,7 @@
 
         function tambah() {
             $('#supplier').modal('show');
-           
+
 
         }
 

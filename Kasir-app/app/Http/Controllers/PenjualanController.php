@@ -72,4 +72,21 @@ class PenjualanController extends Controller
             ->rawColumns(['aksi', 'kode_member'])
             ->make(true);
     }
+
+    public function destroy($id)
+    {
+        $penjualan = Penjualan::find($id);
+        $detail    = PenjualanDetail::where('id_penjualan', $penjualan->id_penjualan)->get();
+        foreach ($detail as $item) {
+            $produk = Produk::find($item->id_produk);
+            if ($produk) {
+                $produk->stok += $item->jumlah;
+            }
+            $item->delete();
+        }
+
+        $penjualan->delete();
+
+        return response(null, 204);
+    }
 }

@@ -19,8 +19,14 @@ class Users extends Seeder
                 'name' => 'kasir1',
                 'email' => 'kasir1@gmail.com',
                 'password' => bcrypt('12345'),
-                'level' => '0'
-            ]
+                'level' => '2'
+            ],
+            [
+                'name' => 'admin',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('12345'),
+                'level' => '1'
+            ],
         ];
         foreach ($users as $key => $user) {
             User::create($user);

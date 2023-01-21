@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Transaksi Produk
+    Transaksi Pembelian
 @endsection
 
 @push('css')

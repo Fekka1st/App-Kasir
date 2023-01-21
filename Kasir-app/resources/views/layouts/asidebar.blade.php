@@ -48,6 +48,7 @@
                         </p>
                     </a>
                 </li>
+
                 @if (auth()->user()->level == 1)
                     <li class="nav-header">MASTER</li>
                     <li class="nav-item">
@@ -190,6 +191,7 @@
                         </a>
                     </li>
                 @endif
+
 
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="$('#Logout').submit()">

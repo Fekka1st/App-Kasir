@@ -93,7 +93,7 @@
 
                     <div class="row">
                         <div class="col-lg-8">
-                            <div class="tampil-bayar bg-primary"></div>
+                            <div class="tampil-bayar bg-primary">Rp{{ format_uang($total) }}</div>
                             <div class="tampil-terbilang"></div>
                         </div>
                         <div class="col-lg-4">
@@ -147,21 +147,21 @@
                                         </div>
                                     @endif
                                 </div>
-                                    <label for="kembali" class="col-lg-2 control-label">Kembalia</label>
+                                <label for="kembali" class="col-lg-4 control-label">Kembalian</label>
                                 <div class="form-group row">
                                     @if (session('cart'))
-                                        <div class="col-lg-8">
-                                            <input type="text" value="{{ session()->get('cart', ['bayar']) - $total }} "
-                                                id="bayarrp" class="bayar form-control">
+                                        <div class="col-lg-10">
+                                            <input type="text"
+                                                value="{{ session()->get('cart', ['bayar']) - $total }} " id="bayarrp"
+                                                class="bayar form-control">
                                         </div>
                                     @else
                                         <div class="col-lg-8">
-                                            <input type="text"
-                                                id="bayarrp" class="bayar form-control">
+                                            <input type="text" id="bayarrp" class="bayar form-control">
                                         </div>
-                                     @endif
-                                    </div>
-                               
+                                    @endif
+                                </div>
+
                             </form>
                         </div>
                     </div>
@@ -173,14 +173,16 @@
                     <input type="hidden" name="total_harga" value="{{ $total }}" id="">
                     <input type="hidden" name="diskon" value="0" id="">
                     @if (session('cart'))
-                    <input type="hidden" name="bayar" value="{{ session()->get('cart', ['bayar']) }}"  id="">
-                    <input type="hidden" name="diterima" value="{{ session()->get('cart', ['bayar']) - $total }} " id="">   
+                        <input type="hidden" name="bayar" value="{{ session()->get('cart', ['bayar']) }}"
+                            id="">
+                        <input type="hidden" name="diterima" value="{{ session()->get('cart', ['bayar']) - $total }} "
+                            id="">
                     @endif
                     <input type="hidden" value="{{ Auth::user()->id }}" name="id_user" id="">
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary btn-sm btn-flat pull-right btn-simpan"><i
-                            class="fa fa-floppy-o"></i> Simpan Transaksi</button>
-                        </div>
+                                class="fa fa-floppy-o"></i> Simpan Transaksi</button>
+                    </div>
                 </form>
             </div>
         </div>

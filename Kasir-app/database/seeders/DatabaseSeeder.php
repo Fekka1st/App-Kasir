@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kategori;
+use App\Models\Produk;
+use App\Models\Supplier;
 use Illuminate\Database\Seeder;
 use Sabberworm\CSS\Settings;
 
@@ -19,6 +22,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             Users::class,
             SettingSeeder::class,
+            KategoriSeeder::class,
+            MemberSeeder::class,
+            ProdukSeeder::class,
+            SupplierSeeder::class,
+
         ]);
     }
 }
