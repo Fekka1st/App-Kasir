@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\pembelian;
 use App\Models\Produk;
 use App\Models\Supplier;
 use App\Models\pembeliandetail;
@@ -15,10 +16,10 @@ class PembelianDetailController extends Controller
         $id_pembelian = session('id_pembelian');
         $produk = Produk::orderBy('nama_produk')->get();
         $supplier = Supplier::find(session('id_supplier'));
-        if (!$supplier) {
-            abort(404);
-        }
-        return view('pembelian_detail.index', compact('id_pembelian', 'produk', 'supplier'));
+
+        $diskon = pembelian::find($id_pembelian)->diskon ?? 0;
+
+        return view('pembelian_detail.index', compact('id_pembelian', 'produk', 'supplier', 'diskon'));
     }
 
     public function store(Request $request)

@@ -16,10 +16,10 @@ class Users extends Seeder
     {
         $users = [
             [
-                'name' => 'admin',
-                'email' => 'admin@gmail.com',
+                'name' => 'kasir1',
+                'email' => 'kasir1@gmail.com',
                 'password' => bcrypt('12345'),
-                'level' => '1'
+                'level' => '0'
             ]
         ];
         foreach ($users as $key => $user) {

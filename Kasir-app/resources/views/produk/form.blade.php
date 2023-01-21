@@ -42,7 +42,7 @@
                     <div class="form-group row">
                         <label for="harga_beli" class="col-md-2 col-md-offset-1 control-label">Harga Beli</label>
                         <div class="col-md-6">
-                            <input type="text" name="harga_beli" id="harga_beli" class="form-control" required
+                            <input type="number" name="harga_beli" id="harga_beli" class="form-control" required
                                 autofocus>
                             <span class="help-block with-errors"></span>
                         </div>
@@ -50,7 +50,7 @@
                     <div class="form-group row">
                         <label for="harga_jual" class="col-md-2 col-md-offset-1 control-label">Harga Jual</label>
                         <div class="col-md-6">
-                            <input type="text" name="harga_jual" id="harga_jual" class="form-control" required
+                            <input type="number" name="harga_jual" id="harga_jual" class="form-control" required
                                 autofocus>
                             <span class="help-block with-errors"></span>
                         </div>
@@ -58,14 +58,14 @@
                     <div class="form-group row">
                         <label for="diskon" class="col-md-2 col-md-offset-1 control-label">Diskon</label>
                         <div class="col-md-6">
-                            <input type="text" name="diskon" id="diskon" class="form-control" required autofocus>
+                            <input type="number" name="diskon" id="diskon" class="form-control" required autofocus>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="stok" class="col-md-2 col-md-offset-1 control-label">Stok</label>
                         <div class="col-md-6">
-                            <input type="text" name="stok" id="stok" class="form-control" required autofocus>
+                            <input type="number" name="stok" id="stok" class="form-control" required autofocus>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>

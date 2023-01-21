@@ -21,7 +21,7 @@
                         <div class="card mb-3" style="max-width: 540px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ public_path('img/Logo.png') }}" class="img-fluid rounded-start"
+                                    <img src="{{ public_path('$settings->path_logo') }}" class="img-fluid rounded-start"
                                         alt="Logo">
                                 </div>
                                 <div class="col-md-8">
