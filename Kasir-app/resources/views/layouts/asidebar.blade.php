@@ -115,15 +115,15 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('transaksi.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-cart-arrow-down"></i>
                             <p>
                                 Transaksi Lama
-                                {{-- <span class="right badge badge-danger">New</span> --}}
+                             
                             </p>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a href="{{ route('transaksi.baru') }}" class="nav-link">
                             <i class="nav-icon fas fa-cart-arrow-down"></i>
@@ -172,15 +172,15 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('transaksi.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-cart-arrow-down"></i>
                             <p>
                                 Transaksi Lama
-                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            
                             </p>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a href="{{ route('transaksi.baru') }}" class="nav-link">
                             <i class="nav-icon fas fa-cart-arrow-down"></i>

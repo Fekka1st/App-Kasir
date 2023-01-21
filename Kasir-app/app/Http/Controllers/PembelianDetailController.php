@@ -66,7 +66,7 @@ class PembelianDetailController extends Controller
         //     })
         //     ->addColumn('subtotal', function ($detail) {
         //         return 'RP. ' . $detail->subtotal;
-        //     })
+        //     })404
         //     ->addColumn('aksi', function ($detail) {
         //         return '
         //         <button type="button" onclick="hapus(`' . route('pembelian_detail.destroy', $detail->id_pembelian_detail) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i>hapus</button>';
