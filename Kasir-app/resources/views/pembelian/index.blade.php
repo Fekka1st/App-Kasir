@@ -205,8 +205,6 @@
         }
 
 
-
-
         function hapus(url) {
             swal({
                     title: "Apakah Kamu Yakin",
