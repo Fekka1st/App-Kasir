@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pengeluaran;
 use PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\LaporanPengeluaranExport;
+use App\Http\Controllers\Contoroller;
+
 
 class PengeluaranController extends Controller
 {
@@ -69,10 +73,18 @@ class PengeluaranController extends Controller
         return response(null, 204);
     }
 
+
+    // public function export(){
+    //     return Excel::download(new LaporanPengeluaranExport, 'Laporan Pengeluaran.xlsx');
+    // }
+    public function export(){
+        return Excel::download(new LaporanPengeluaranExport, 'LaporanPengeluaran.xlsx');
+
     public function report(){
         $pengeluaran = Pengeluaran::all();
 
         $pdf = PDF::loadview('pengeluaran.print_preview', ['pengeluaran'=>$pengeluaran]);
         return $pdf->download('data_pengeluaran.pdf');
+
     }
 }

@@ -78,6 +78,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/pembelian_detail', PembelianDetailController::class)
         ->except('create', 'show', 'edit');
 
+    Route::get('/pengeluaran/export', [PengeluaranController::class, 'export'])->name('pengeluaran.export');
+
+
 
     Route::get('/transaksi/baru', [PenjualanController::class, 'create'])->name('transaksi.baru');
     Route::post('/transaksi/simpan', [PenjualanController::class, 'store'])->name('transaksi.simpan');
@@ -99,6 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/user/data', [UserController::class, 'data'])->name('user.data');
     Route::resource('/user', UserController::class);
+
 
 });
 
