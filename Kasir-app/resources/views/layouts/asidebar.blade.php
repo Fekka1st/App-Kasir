@@ -48,118 +48,151 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">MASTER</li>
-                <li class="nav-item">
-                    <a href="{{ route('kategori.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-cube"></i>
-                        <p>
-                            Kategori
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('produk.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-cube"></i>
-                        <p>
-                            Produk
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('member.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-id-card"></i>
-                        <p>
-                            Member
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('supplier.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-truck"></i>
-                        <p>
-                            Supplier
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-header">Transaksi</li>
-                <li class="nav-item">
-                    <a href="{{ route('pengeluaran.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-money-bill"></i>
-                        <p>
-                            Pengeluaran
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('pembelian.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-download"></i>
-                        <p>
-                            Pembelian
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-upload"></i>
-                        <p>
-                            Penjualan
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-cart-arrow-down"></i>
-                        <p>
-                            Transaksi Lama
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-cart-arrow-down"></i>
-                        <p>
-                            Transaksi Baru
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-header">Report</li>
-                <li class="nav-item">
-                    <a href="{{ route('laporan.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-file-pdf"></i>
-                        <p>
-                            Laporan
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-header">System</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user-alt"></i>
-                        <p>
-                            Akun
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-cog"></i>
-                        <p>
-                            Pengaturan
-                            {{-- <span class="right badge badge-danger">New</span> --}}
-                        </p>
-                    </a>
-                </li>
+
+                @if (auth()->user()->level == 1)
+                    <li class="nav-header">MASTER</li>
+                    <li class="nav-item">
+                        <a href="{{ route('kategori.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-cube"></i>
+                            <p>
+                                Kategori
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('produk.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-cube"></i>
+                            <p>
+                                Produk
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('member.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-id-card"></i>
+                            <p>
+                                Member
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('supplier.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-truck"></i>
+                            <p>
+                                Supplier
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-header">Transaksi</li>
+                    <li class="nav-item">
+                        <a href="{{ route('pengeluaran.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-money-bill"></i>
+                            <p>
+                                Pengeluaran
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('pembelian.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-download"></i>
+                            <p>
+                                Pembelian
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('penjualan.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-upload"></i>
+                            <p>
+                                Penjualan
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('transaksi.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-cart-arrow-down"></i>
+                            <p>
+                                Transaksi Lama
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('transaksi.baru') }}" class="nav-link">
+                            <i class="nav-icon fas fa-cart-arrow-down"></i>
+                            <p>
+                                Transaksi Baru
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-header">Report</li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-file-archive"></i>
+                            <p>
+                                Laporan
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-header">System</li>
+                    <li class="nav-item">
+                        <a href="{{ route('user.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-user-alt"></i>
+                            <p>
+                                Akun
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-cog"></i>
+                            <p>
+                                Pengaturan
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a href="{{ route('penjualan.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-upload"></i>
+                            <p>
+                                Penjualan
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('transaksi.index') }}" class="nav-link">
+                            <i class="nav-icon fas fa-cart-arrow-down"></i>
+                            <p>
+                                Transaksi Lama
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('transaksi.baru') }}" class="nav-link">
+                            <i class="nav-icon fas fa-cart-arrow-down"></i>
+                            <p>
+                                Transaksi Baru
+                                {{-- <span class="right badge badge-danger">New</span> --}}
+                            </p>
+                        </a>
+                    </li>
+                @endif
+
+
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="$('#Logout').submit()">
                         <i class="nav-icon fa fa-sign-out-alt"></i>

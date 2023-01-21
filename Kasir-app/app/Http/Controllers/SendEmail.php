@@ -11,6 +11,12 @@ class SendEmail extends Controller
 {
     public function index(){
         $produk = Produk::all();
-        Mail::to('supplier@gmail.com')->send(new SendingEmail($produk));
+        Mail::to('supplier@gmail.com')->queue(new SendingEmail($produk));
+
+        return redirect()->back();
+    }
+    public function memberexports()
+    {
+        return Excel::download(new MemberExport, 'members.xlsx');
     }
 }

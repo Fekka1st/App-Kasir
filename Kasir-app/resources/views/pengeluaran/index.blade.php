@@ -17,7 +17,12 @@
                     <div class="btn-group">
                         <button onclick="tambah('{{ route('pengeluaran.store') }}')" class="btn btn-success"><i
                                 class="fa fa-plus-circle"></i> Tambah</button>
+
+                        <a href="{{ route('pengeluaran.export') }}" class="btn btn-info" target="_blank"><i
+                            class="fa fa-file-excel"></i> Export</a>
+
                             <a href="{{ route('pengeluaran.cetak') }}" target="_blank" class="btn btn-danger"><i class="fa fa-file-pdf"></i> Cetak Laporan</a>
+
                     </div>
                 </div>
                 <div class="card-body table-responsive">
