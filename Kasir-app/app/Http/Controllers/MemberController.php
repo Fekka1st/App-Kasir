@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\setting;
 use Illuminate\Http\Request;
 use PDF;
+
 use Excel;
 use App\Exports\MemberExport;
 use App\Imports\MemberImport;
+
+
+use Sabberworm\CSS\Settings;
 
 
 class MemberController extends Controller
@@ -133,10 +138,9 @@ class MemberController extends Controller
         }
 
         $datamember = $datamember->chunk(2);
-
-
+        $settings = Setting::first();
         $no  = 1;
-        $pdf = PDF::loadView('member.cetak', compact('datamember', 'no'));
+        $pdf = PDF::loadView('member.cetak', compact('datamember', 'no', 'settings'));
         $pdf->setPaper(array(0, 0, 566.93, 850.39), 'potrait');
         return $pdf->stream('member.pdf');
     }
