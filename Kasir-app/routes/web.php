@@ -73,6 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pembelian_detail/loadform/{diskon}/{total}', [PembelianDetailController::class, 'loadForm'])->name('pembelian_detail.load_form');
     Route::resource('/pembelian_detail', PembelianDetailController::class)
         ->except('create', 'show', 'edit');
+    Route::get('/pengeluaran/export', [PengeluaranController::class, 'export'])->name('pengeluaran.export');
 });
 
 // Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');
