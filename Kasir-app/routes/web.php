@@ -5,6 +5,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PembelianDetailController;
@@ -49,10 +50,13 @@ Route::middleware([
 
 Route::group(['middleware' => 'auth'], function () {
 
-
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     route::group(['middleware' => '1'], function () {
+        Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    // Route::post('/laporan', [LaporanController::class, 'refresh'])->name('laporan.refresh');
+    Route::get('/laporan/data/{awal}/{akhir}', [LaporanController::class, 'data'])->name('laporan.data');
+    Route::get('/laporan/pdf/{awal}/{akhir}', [LaporanController::class, 'exportPDF'])->name('laporan.export_pdf');
         Route::get('/kategori/data', [KategoriController::class, 'data'])->name('kategori.data');
         Route::resource('/kategori', KategoriController::class); // ini bukan array guys hati hati yah
 
@@ -134,6 +138,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/penjualan/{id}', [PenjualanController::class, 'show'])->name('penjualan.show');
         Route::delete('/penjualan/{id}', [PenjualanController::class, 'destroy'])->name('penjualan.destroy');
     });
+
+
+    Route::get('/print_report', [PengeluaranController::class, 'report'])->name('pengeluaran.cetak');
+
 
 });
 

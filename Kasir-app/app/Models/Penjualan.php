@@ -9,6 +9,7 @@ class Penjualan extends Model
 {
     use HasFactory;
 
+
     protected $table = 'penjualans';
     protected $primaryKey = 'id_penjualan';
     protected $guarded = [];
@@ -22,4 +23,5 @@ class Penjualan extends Model
     {
         return $this->hasOne(User::class, 'id', 'id_user');
     }
+
 }
