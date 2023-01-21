@@ -89,6 +89,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/transaksi/loadform/{diskon}/{total}/{diterima}', [PenjualanDetailController::class, 'loadForm'])->name('transaksi.load_form');
     Route::resource('/transaksi', PenjualanDetailController::class)
         ->except('create', 'show', 'edit');
+    Route::post('/transaksi/tambah/', [PenjualanDetailController::class, 'tambah'])->name('tambah');
+    Route::post('/transaksi/bayar/', [PenjualanDetailController::class, 'bayar'])->name('pembayaran');
+    Route::post('/transaksi/simpan-transaski/', [PenjualanDetailController::class, 'simpanTransaksi'])->name('simpanTransaksi');
 
     Route::get('/penjualan/data', [PenjualanController::class, 'data'])->name('penjualan.data');
     Route::get('/penjualan', [PenjualanController::class, 'index'])->name('penjualan.index');
@@ -99,7 +102,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/user/data', [UserController::class, 'data'])->name('user.data');
     Route::resource('/user', UserController::class);
-
 });
 
 // Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');

@@ -44,7 +44,7 @@
     </div>
 
 
-    {{-- detail modal --}}
+    {{-- detail modal
     <div class="modal fade" id="supplier2" tabindex="-1" aria-labelledby="formLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <form action="" method="post" class="form-horizontal">
@@ -69,7 +69,7 @@
                     </div>
             </form>
         </div>
-    </div>
+    </div> --}}
 
     @includeIf('pembelian.supplier')
 @endsection
@@ -146,11 +146,11 @@
             });
         });
 
-        function showDetail(url) {
-            $('#supplier2').modal('show');
-            table1.ajax.url(url);
-            table1.ajax.reload;
-        }
+        // function showDetail(url) {
+        //     $('#supplier2').modal('show');
+        //     table1.ajax.url(url);
+        //     table1.ajax.reload;
+        // }
 
         function tambah() {
             $('#supplier').modal('show');
