@@ -44,6 +44,7 @@
     </div>
 
 
+
     {{-- detail modal
     <div class="modal fade" id="supplier2" tabindex="-1" aria-labelledby="formLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -71,7 +72,7 @@
         </div>
     </div> --}}
 
-    @includeIf('pembelian.supplier')
+
 @endsection
 
 
@@ -146,17 +147,25 @@
             });
         });
 
+
         // function showDetail(url) {
         //     $('#supplier2').modal('show');
         //     table1.ajax.url(url);
         //     table1.ajax.reload;
         // }
 
+
         function tambah() {
             $('#supplier').modal('show');
+           
 
         }
 
+        function showDetail(url) {
+            $('#table-detail').modal('show');
+            table1.ajax.url(url);
+            table1.ajax.reload;
+        }
 
 
         function hapus(url) {

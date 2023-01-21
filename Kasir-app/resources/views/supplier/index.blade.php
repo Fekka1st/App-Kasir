@@ -15,7 +15,11 @@
             <div class="card">
                 <div class="card-header with-border">
                     <button onclick="tambah('{{ route('supplier.store') }}')" class="btn btn-success"><i
+
+                            class="fa fa-plus-circle"></i>Tambah</button>
+
                             class="fa fa-plus-circle"></i> Tambah</button>
+
                 </div>
                 <div class="card-body table-responsive">
                     <table class="table table-striped table-bordered ">

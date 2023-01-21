@@ -19,7 +19,13 @@
                                 class="fa fa-plus-circle"></i> Tambah</button>
                         <button onclick="cetakmember('{{ route('member.cetak_member') }}')" class="btn btn-danger"><i
                                 class="fa fa-id-card"></i> Cetak Member</button>
+                        <button onclick="exportmember('{{ route('member.export') }}')" class="btn btn-info"><i
+                                class="fa fa-id-card"></i> Export Member</button>
+                        <button onclick="importmember('{{ route('member.import') }}')" class="btn btn-primary"><i
+                                    class="fa fa-id-card"></i> Import Member</button>
                     </div>
+                    <a href="files/members.xlsx" class="btn btn-secondary"><i
+                        class="fa fa-id-card"></i> Template Import Member</a>
                 </div>
                 <div class="box-body table-responsive">
                     <form action=" " method="post" class="form-member">
@@ -77,7 +83,7 @@
                         data: 'alamat'
                     },
                     {
-                        data: 'telpon'
+                        data: 'telepon'
                     },
                     {
                         data: 'aksi',
@@ -89,11 +95,19 @@
             });
 
             $('#form').validator().on('submit', function(e) {
+                                // Get form
+                        var form = $('#formMember')[0];
+
+                 // Create an FormData object 
+                  var data = new FormData(form);
                 if (!e.preventDefault()) {
                     $.ajax({
                             url: $('#form form').attr('action'),
                             type: 'post',
-                            data: $('#form form').serialize(),
+                            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
                         })
                         .done((response) => {
                             $('#form').modal('hide');
@@ -132,7 +146,7 @@
             $.get(url)
                 .done((response) => {
                     $('#form [name=nama]').val(response.nama);
-                    $('#form [name=telpon]').val(response.telpon);
+                    $('#form [name=telepon]').val(response.telepon);
                     $('#form [name=alamat]').val(response.alamat);
                 })
                 .fail((errors) => {
@@ -186,6 +200,29 @@
                     .attr('action', url)
                     .submit();
             }
+        }
+        function exportmember(url) {
+                $('.form-member')
+                    .attr('target', '._blank')
+                    .attr('action', url)
+                    .submit();
+            
+        }
+        function importmember(url) {
+            $('#import-member').empty();
+            const y = document.getElementById('import-member');
+            $('#form').modal('show');
+            $('#formLabel').text('Import Member');
+            $('#input-nama').remove();
+            $('#input-telepon').remove();
+            $('#input-alamat').remove();
+            $('#form form').attr('action', url);
+            $('#form [name=_method]').val('post');
+            var z = document.createElement("input");
+            z.setAttribute('type', 'file');
+            z.setAttribute('name', 'file');
+            z.setAttribute('class', 'form-control');
+            y.appendChild(z);
         }
     </script>
 @endpush

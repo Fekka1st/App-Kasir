@@ -49,6 +49,7 @@ Route::middleware([
 
 Route::group(['middleware' => 'auth'], function () {
 
+
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     route::group(['middleware' => '1'], function () {
@@ -67,6 +68,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/member/data', [MemberController::class, 'data'])->name('member.data');
         Route::resource('/member', MemberController::class);
         Route::post('/member/cetak-member', [MemberController::class, 'cetakmember'])->name('member.cetak_member');
+        Route::post('/member/export-member', [MemberController::class, 'memberexports'])->name('member.export');
+        Route::post('/member/import-member', [MemberController::class, 'memberimports'])->name('member.import');
 
         Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
         Route::resource('/pengeluaran', PengeluaranController::class);
@@ -84,6 +87,8 @@ Route::group(['middleware' => 'auth'], function () {
             ->except('create', 'show', 'edit');
 
 
+      Route::get('/pengeluaran/export', [PengeluaranController::class, 'export'])->name('pengeluaran.export');
+      
         Route::get('/transaksi/baru', [PenjualanController::class, 'create'])->name('transaksi.baru');
         Route::post('/transaksi/simpan', [PenjualanController::class, 'store'])->name('transaksi.simpan');
         Route::get('/transaksi/selesai', [PenjualanController::class, 'selesai'])->name('transaksi.selesai');
@@ -129,6 +134,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/penjualan/{id}', [PenjualanController::class, 'show'])->name('penjualan.show');
         Route::delete('/penjualan/{id}', [PenjualanController::class, 'destroy'])->name('penjualan.destroy');
     });
+
 });
 
 // Route::get('/send-email', [SendEmail::class, 'index'])->name('permintaan.barang');

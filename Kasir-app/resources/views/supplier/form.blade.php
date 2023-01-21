@@ -34,8 +34,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-sm btn-flat btn-primary"><i class="fa fa-save"></i> Simpan</button>
-                        <button type="button" class="btn btn-sm btn-flat btn-warning" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i> Batal</button>
+                        <button type="submit" class="btn btn-sm btn-flat btn-secondary"><i class="fa fa-save"></i> Simpan</button>
+                        <button type="button" class="btn btn-sm btn-flat btn-primary" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i> Batal</button>
                     </div>
             </form>
         </div>
