@@ -1,10 +1,6 @@
 <p align="center"><a href="#" target="_blank"><img src="./img/home.png" width="400"></a></p>
 
 <h1 align="center">Aplikasi Kasir</h1>
-
-_ini aplikasi dibuat untuk memenuhi tugas besar PemrogramanWEBLanjutan_
-_Berikut Gambar dari aplikasi yang kami buat_
-
 ## ScreenShoot
 
 <h3>Logo</h3>
